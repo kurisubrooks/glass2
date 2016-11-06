@@ -13,12 +13,22 @@
     <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="../node_modules/angular-material/angular-material.js"></script>
     <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 
     <script>
 
+        const remote = require("electron").remote
+        const $ = require("jquery")
+
         angular.module("startup", ["ngMaterial", "ngMdIcons"])
-            .controller("startup", function($scope) { })
+            .controller("startup", ($scope) => { })
+
+        setTimeout(() => {
+
+            $("img").fadeOut(200)
+            setTimeout(() => 
+                remote.getCurrentWindow().loadURL(`file://${__dirname}/login.html`), 100)
+
+        }, 5000)
 
     </script>
 
