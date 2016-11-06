@@ -11,11 +11,14 @@
 
 html, body {
     margin: 0;
+    height: 100%;
     font-family: "Roboto", sans-serif;
-    background: url(../../images/wallpaper.jpg) no-repeat center center fixed;
-    background-size: cover;
     background-color: #FFFFFF;
     overflow: hidden;
+}
+
+main {
+    height: 100%;
 }
 
 img {

@@ -1,5 +1,11 @@
+main {
+    display: none;
+    background: url(../../images/wallpaper.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
 login {
-    display: block;
+    display: none;
     position: absolute;
     width: 400px;
     top: 50%;
