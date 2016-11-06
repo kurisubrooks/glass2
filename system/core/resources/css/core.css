@@ -1,0 +1,22 @@
+*,
+*:active,
+*:focus,
+*::before,
+*::after {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #FFFFFF;
+    background: url(../../images/wallpaper.jpg) no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+img.avatar {
+    border-radius: 50%;
+}
