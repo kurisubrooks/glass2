@@ -1,0 +1,36 @@
+.toolbar {
+    display: flex;
+    background: #262626;
+    font-size: 1.1em;
+    color: #FFFFFF;
+    padding: 0.5em;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.toolbar .apps {
+    border-radius: 2px;
+    align-self: flex-start;
+}
+
+.toolbar .apps span {
+    display: inline-flex;
+    height: calc(32px + 0.2em);
+    vertical-align: middle;
+    padding: 0.35em;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.toolbar .apps span:hover {
+    background: rgba(255, 255, 255, .05);
+}
+
+.toolbar .apps .material-icons {
+    height: 24px;
+    width: 24px;
+}

@@ -4,9 +4,66 @@
 
     <meta charset="utf-8">
     <title>Desktop</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="../system/design/core.css" rel="stylesheet">
+    <link href="../system/design/desktop.css" rel="stylesheet">
+    <link href="../system/design/windows.css" rel="stylesheet">
+    <link href="../system/design/toolbar.css" rel="stylesheet">
+
+    <link href="../node_modules/angular-material/angular-material.min.css" rel="stylesheet">
+    <link href="../node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet">
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-aria/angular-aria.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../node_modules/angular-material/angular-material.js"></script>
+    <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
+    <script src="../system/core/windows.js"></script>
+
+    <script>
+
+        const remote = require("electron").remote
+        const wm = require("../system/core/windows.js")
+
+        window.$ = window.jQuery = require("jquery")
+
+        angular.module("desktop", ["ngMaterial", "ngMdIcons"])
+            .controller("desktop", ($scope) => { })
+
+        $(function() {
+            $("main").fadeIn(250)
+
+            setTimeout(() => {
+                let win = wm.window({
+                    title: "Browser",
+                    width: 600,
+                    height: 250,
+                    theme: "light",
+                    url: "https://google.com"
+                })
+            }, 500)
+
+
+        })
+
+    </script>
+
+    <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
 
 </head>
-<body>
+<body ng-app="desktop" ng-controller="desktop" ng-cloak>
+
+    <main class="desktop">
+
+        <div class="windows">
+
+        </div>
+
+        <div class="toolbar">
+            <div class="apps"><span id="app_launcher"><i class="material-icons">apps</i></span></div>
+        </div>
+
+    </main>
 
 </body>
 </html>
