@@ -1,7 +1,11 @@
 main {
     display: none;
-    background: url(../../images/wallpaper.jpg) no-repeat center center fixed;
+    background: url(../images/wallpaper.jpg) no-repeat center center fixed;
     background-size: cover;
+}
+
+md-input-container {
+    width: 100%;
 }
 
 login {
@@ -35,7 +39,7 @@ login content {
     display: flex;
     flex-direction: column;
     background: rgb(238, 238, 238);
-    height: 340px;
+    height: 320px;
     padding: 20px 30px 20px;
 }
 
