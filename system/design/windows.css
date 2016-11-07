@@ -1,0 +1,109 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    padding: 2px 0;
+    height: 8px;
+    width: 8px;
+}
+
+::-webkit-scrollbar-button { display: none; }
+::-webkit-scrollbar-corner { background: #EEEEEE; }
+::-webkit-scrollbar-track  { background: #EEEEEE; }
+::-webkit-scrollbar-thumb  { background: #DDDDDD; }
+::-webkit-resizer          { background: #EEEEEE; }
+
+.windows {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 3.35em);
+    z-index: 1;
+}
+
+.window {
+    position: absolute;
+    z-index: 1;
+    min-height: 420px;
+    min-width: 700px;
+    background: transparent;
+    box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    background: #FFFFFF;
+    cursor: default;
+}
+
+.window .menubar {
+    padding: 0.5em;
+    height: calc(24px + 1em);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.window .menubar .title {
+    float: left;
+    font-weight: 500;
+    height: 24px;
+    padding-top: 3px;
+    margin-left: 5px;
+}
+
+.window .menubar .controls {
+    float: right;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.window .menubar .controls span {
+    height: 24px;
+    margin: 0 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    -webkit-transition: background 0.04s, -webkit-transform 0.04s;
+    transition: background 0.04s, transform 0.04s;
+}
+
+.window .menubar .controls span:hover {
+    background: rgba(153, 153, 153, 0.2);
+}
+
+.window .menubar .controls span:active {
+    background: rgba(153, 153, 153, 0.4);
+}
+
+.window .content {
+    /*min-height: 400px;
+    min-width: 700px;
+    overflow: scroll;*/
+    min-height: 400px;
+    min-width: 700px;
+    height: 100%;
+    width: 100%;
+}
+
+.window .content webview {
+    height: inherit;
+    width: inherit;
+}
+
+.window.light .menubar {
+    background: #F5F5F5;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.window.light {
+    background: #FAFAFA;
+    color: rgba(0, 0, 0, 1);
+}
+
+.window.dark .menubar {
+    background: #212121;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.window.dark {
+    background: #303030;
+    color: rgba(255, 255, 255, 1);
+}
+
+.ui-icon-gripsmall-diagonal-se {
+    display: none;
+}
