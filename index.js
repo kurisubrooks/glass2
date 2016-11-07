@@ -8,12 +8,14 @@ let win
 let startup = () => {
     win = new BrowserWindow({
         width: 1280,
-        height: 720
+        minWidth: 1024,
+        height: 720,
+        minHeight: 576
     })
 
     win.loadURL(`file://${__dirname}/render/startup.html`)
     //win.webContents.openDevTools()
-  
+
     win.on("closed", () => {
         win = null
     })
