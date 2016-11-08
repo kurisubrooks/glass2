@@ -22,7 +22,8 @@
 
     <style>
 
-        main {
+        body {
+            display: none;
             background: url(../users/kurisu/wallpaper.png) no-repeat center center fixed;
         }
 
@@ -30,23 +31,18 @@
 
     <script>
 
-        const remote = require("electron").remote
-        const moment = require("moment")
-
         window.$ = window.jQuery = require("jquery")
         window._ = require("lodash")
-        require("../system/core/ventus");
-        const Ventus = window.Ventus;
+
+        const remote = require("electron").remote
+        const moment = require("moment")
+        require("../system/core/ventus")
+        const Ventus = window.Ventus
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { })
 
-        $(function() {
-            setTimeout(() => $("main").fadeIn(250), 200)
-            setInterval(() => $("#clock").text(moment().format("hh:mm A")), 150)
-
-            let wm = new Ventus.WindowManager()
-
+        function newWin() {
             wm.createWindow({
                 title: "Window",
                 width: 400,
@@ -54,38 +50,36 @@
 
                 events: {
                     closed: function() {
-                        this.destroy();
+                        this.destroy()
                     }
                 }
             }).open()
+        }
 
+        $(function() {
+            setTimeout(() => $("body").fadeIn(250), 200)
+            setInterval(() => $("#clock").text(moment().format("hh:mm A")), 150)
+
+            window.wm = new Ventus.WindowManager()
         })
 
     </script>
 
-    <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-
 </head>
-<body ng-app="desktop" ng-controller="desktop" ng-cloak>
+<body class="desktop" ng-app="desktop" ng-controller="desktop" ng-cloak>
 
-    <main class="desktop">
+    <div class="notifications"></div>
 
-        <div class="windows"></div>
-
-        <div class="notifications"></div>
-
-        <div class="toolbar">
-            <div class="apps">
-                <span id="app_launcher"><i class="material-icons">apps</i></span>
-                <span id="app_browser"><i class="material-icons">public</i></span>
-            </div>
-
-            <div class="tray">
-                <span id="clock">__:__</span>
-            </div>
+    <div class="toolbar">
+        <div class="apps">
+            <span id="app_launcher" onclick="newWin()"><i class="material-icons">apps</i></span>
+            <span id="app_browser"><i class="material-icons">public</i></span>
         </div>
 
-    </main>
+        <div class="tray">
+            <span id="clock">__:__</span>
+        </div>
+    </div>
 
 </body>
 </html>
