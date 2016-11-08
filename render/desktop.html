@@ -58,7 +58,7 @@
 
         $(function() {
             setTimeout(() => $("body").fadeIn(250), 200)
-            setInterval(() => $("#clock").text(moment().format("hh:mm A")), 150)
+            setInterval(() => $("#clock").text(moment().format("h:mm A")), 150)
 
             window.wm = new Ventus.WindowManager()
         })
@@ -72,8 +72,8 @@
 
     <div class="toolbar">
         <div class="apps">
-            <span id="app_launcher" onclick="newWin()"><i class="material-icons">apps</i></span>
-            <span id="app_browser"><i class="material-icons">public</i></span>
+            <span id="app_launcher"><i class="material-icons">apps</i></span>
+            <span id="app_browser" onclick="newWin()"><i class="material-icons">public</i></span>
         </div>
 
         <div class="tray">
