@@ -9,7 +9,7 @@
     } else { // Browser globals
         root.Ventus = factory(root.$);
     }
-}(this, function (jQuery) {
+}(window ? window : this, function (jQuery) {
 
     var requirejs, require, define;
 (function (undef) {

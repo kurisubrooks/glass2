@@ -34,7 +34,9 @@
         const moment = require("moment")
 
         window.$ = window.jQuery = require("jquery")
-        const Ventus = require("../system/core/ventus")
+        window._ = require("lodash")
+        require("../system/core/ventus");
+        const Ventus = window.Ventus;
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { })
