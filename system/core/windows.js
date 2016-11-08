@@ -46,7 +46,7 @@ module.exports = {
             handle: menubar,
             scroll: false,
             containment: "parent",
-            start: function() {
+            start: () => {
                 _.pull(activeWindows, id)
                 activeWindows.push(id)
                 updateZIndexes(activeWindows)
@@ -64,7 +64,7 @@ module.exports = {
         win.position({
             my: "center",
             at: "center",
-            of: ".windows",
+            of: windows,
             collision: "fit"
         })
 
