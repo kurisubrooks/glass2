@@ -76,7 +76,7 @@
     display: none;
 }
 
-/* Window styles */
+/* Window Styling */
 
 .wm-window {
     display: none;
@@ -218,11 +218,11 @@
 }
 
 .wm-window.inactive header.wm-window-title {
-    background-color: #555;
+    background-color: #DDD;
 }
 
 .wm-window.inactive header.wm-window-title h1 {
-    color: #FFF;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .wm-window.active .wm-content * {
