@@ -1,14 +1,16 @@
 .toolbar {
     display: flex;
     position: absolute;
+    box-sizing: border-box;
     width: 100%;
-    z-index: 2;
+    z-index: 10005;
     bottom: 0;
     left: 0;
     color: #FFFFFF;
     font-size: 1.1em;
     background: #222;
     padding: 0.5em;
+    height: 54px;
 }
 
 .toolbar .apps {
