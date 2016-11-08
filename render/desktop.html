@@ -39,12 +39,16 @@
         require("../system/core/ventus")
         const Ventus = window.Ventus
 
+        let count = 0
+
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { })
 
         function newWin() {
+            ++count
+
             wm.createWindow({
-                title: "Window",
+                title: `Window ${count}`,
                 width: 400,
                 height: 250,
 
