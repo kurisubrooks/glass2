@@ -9,20 +9,22 @@
          url(../fonts/MaterialIcons-Regular.ttf) format("truetype");
 }
 
-.material-icons {
-    font-family: "Material Icons";
-    font-weight: normal;
+@font-face {
+    font-family: "Roboto";
     font-style: normal;
-    font-size: 24px;
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    font-weight: 400;
+    src: url("../fonts/Roboto-Regular.woff2?v=1.1.0") format("woff2"),
+         url("../fonts/Roboto-Regular.woff?v=1.1.0") format("woff"),
+         url("../fonts/Roboto-Regular.ttf?v=1.1.0") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/Roboto-Medium.woff2?v=1.1.0") format("woff2"),
+         url("../fonts/Roboto-Medium.woff?v=1.1.0") format("woff"),
+         url("../fonts/Roboto-Medium.ttf?v=1.1.0") format("truetype");
 }
 
 *,
@@ -63,4 +65,25 @@ center {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.debug {
+    border: 3px solid #FF0000;
+    background: rgba(255, 0, 0, 0.1);
 }
