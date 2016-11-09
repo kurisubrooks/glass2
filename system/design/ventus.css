@@ -24,8 +24,6 @@
 
 .wm-space.expose .wm-window {
     border-radius: 0;
-    width: 400px !important;
-    height: 250px !important;
 }
 
 .wm-space.expose .wm-window:hover {
@@ -113,6 +111,7 @@
     background: #F5F5F5;
     color: rgba(0, 0, 0, 0.7);
     border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 0.7em 0.8em;
     overflow: hidden;
 }
