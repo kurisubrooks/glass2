@@ -47,9 +47,13 @@
             let webview = $("<webview style='height:100%' src='http://google.com'></webview>")
 
             webview.on("did-change-theme-color", (e) => {
-                console.log(e)
-                console.log(e.originalEvent.themeColor)
-                win.$titlebar.css("background-color", e.originalEvent.themeColor)
+                let theme = e.originalEvent.themeColor
+                win.$titlebar.css("background-color", theme)
+
+                if (color(theme).isDark()) win.$titlebar.addClass("light")
+                console.log(theme)
+                console.log(color(theme).isDark())
+                console.log(win.$titlebar)
             })
 
             let win = wm.createWindow({
