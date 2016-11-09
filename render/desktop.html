@@ -36,28 +36,30 @@
 
         const remote = require("electron").remote
         const moment = require("moment")
+        const color = require("tinycolor2")
         require("../system/core/ventus")
         const Ventus = window.Ventus
-
-        let count = 0
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { })
 
         function newWin() {
-            ++count
+            let webview = $("<webview style='height:100%' src='http://google.com'></webview>")
 
-            wm.createWindow({
-                title: `Window ${count}`,
+            webview.on("did-change-theme-color", (e) => {
+                console.log(e)
+                console.log(e.originalEvent.themeColor)
+                win.$titlebar.css("background-color", e.originalEvent.themeColor)
+            })
+
+            let win = wm.createWindow({
+                title: "Browser",
                 width: 400,
-                height: 250,
+                height: 280,
+                content: webview
+            })
 
-                events: {
-                    closed: function() {
-                        this.destroy()
-                    }
-                }
-            }).open()
+            win.open()
         }
 
         $(function() {
