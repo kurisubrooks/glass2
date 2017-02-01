@@ -32,43 +32,26 @@
     <script>
         window.$ = window.jQuery = require("jquery");
         window._ = require("lodash");
-
+        require("../system/core/ventus");
         const remote = require("electron").remote;
         const moment = require("moment");
-        const color = require("tinycolor2");
-        require("../system/core/ventus");
         const Ventus = window.Ventus;
+        window.wm = new Ventus.WindowManager();
+
+        const Window = require("../core/window")(wm);
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
 
-        const newWin = () => {
-            let webview = $("<webview style='height:100%' src='http://google.com'></webview>");
-
-            webview.on("did-change-theme-color", (e) => {
-                let theme = e.originalEvent.themeColor;
-                win.$titlebar.css("background-color", theme);
-
-                if (color(theme).isDark()) win.$titlebar.addClass("light");
-                console.log(theme);
-                console.log(color(theme).isDark());
-                console.log(win.$titlebar);
-            });
-
-            let win = wm.createWindow({
-                title: "Browser",
-                width: 400,
-                height: 280,
-                content: webview
-            });
-
-            win.open();
-        };
-
         $(() => {
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
-            window.wm = new Ventus.WindowManager();
+            $("#app_browser").on("click", () => {
+                new Window({
+                    title: "Browser",
+                    size: [1024, 1024]
+                });
+            });
         });
     </script>
 
@@ -80,7 +63,7 @@
     <div class="toolbar">
         <ul class="apps">
             <li id="app_launcher"><i class="material-icons">apps</i></li>
-            <li id="app_browser" onclick="newWin()"><img src="../system/images/chrome.png"></li>
+            <li id="app_browser"><img src="../system/images/chrome.png"></li>
         </ul>
 
         <ul class="tray">
