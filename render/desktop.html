@@ -32,20 +32,22 @@
     <script>
         window.$ = window.jQuery = require("jquery");
         window._ = require("lodash");
-        require("../system/core/ventus");
+
         const remote = require("electron").remote;
         const moment = require("moment");
-        const Ventus = window.Ventus;
-        window.wm = new Ventus.WindowManager();
-
-        const Window = require("../core/window")(wm);
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
 
         $(() => {
+            require("../system/core/ventus");
+            const Ventus = window.Ventus;
+            window.wm = new Ventus.WindowManager();
+            const Window = require("../core/window")(wm);
+
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
+
             $("#app_browser").on("click", () => {
                 new Window({
                     title: "Browser",
