@@ -16,21 +16,17 @@
     <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
 
     <script>
-
-        const remote = require("electron").remote
-        window.$ = window.jQuery = require("jquery")
+        const remote = require("electron").remote;
+        window.$ = window.jQuery = require("jquery");
 
         angular.module("startup", ["ngMaterial", "ngMdIcons"])
-            .controller("startup", ($scope) => { })
+            .controller("startup", ($scope) => { });
 
         setTimeout(() => {
-
-            $("img").fadeOut(200)
+            $("img").fadeOut(200);
             setTimeout(() =>
-                remote.getCurrentWindow().loadURL(`file://${__dirname}/login.html`), 100)
-
-        }, 5000)
-
+                remote.getCurrentWindow().loadURL(`file://${__dirname}/login.html`), 100);
+        }, 5000);
     </script>
 
 </head>

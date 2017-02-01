@@ -16,30 +16,28 @@
     <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
 
     <script>
-
-        const remote = require("electron").remote
-        window.$ = window.jQuery = require("jquery")
+        const remote = require("electron").remote;
+        window.$ = window.jQuery = require("jquery");
 
         angular.module("login", ["ngMaterial", "ngMdIcons"])
-            .controller("login", ($scope) => { })
+            .controller("login", ($scope) => { });
 
-        $(function() {
-            $("main").fadeIn(500)
-            setTimeout(() => $("login").animate({ height: "toggle", opacity: "toggle" }, 250), 1000)
+        $(() => {
+            $("main").fadeIn(500);
+            setTimeout(() => $("login").animate({ height: "toggle", opacity: "toggle" }, 250), 1000);
 
             $("login").submit((e) => {
-                let success = true
-                let user = e.target[0].value.replace("user:", "")
-                let pass = e.target[1].value
+                let success = true;
+                let user = e.target[0].value.replace("user:", "");
+                let pass = e.target[1].value;
 
                 if (success) {
-                    setTimeout(() => $("login").fadeOut(250), 1000)
-                    setTimeout(() => $("main").fadeOut(250), 1500)
-                    setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600)
+                    setTimeout(() => $("login").fadeOut(250), 1000);
+                    setTimeout(() => $("main").fadeOut(250), 1500);
+                    setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
                 }
-            })
-        })
-
+            });
+        });
     </script>
 
 </head>
