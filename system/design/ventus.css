@@ -111,9 +111,13 @@
     background: #F5F5F5;
     color: rgba(0, 0, 0, 0.7);
     border: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.7em 0.8em;
     overflow: hidden;
+}
+
+.wm-window .wm-window-box header.wm-window-title.dark {
+    background: #282B2D;
 }
 
 .wm-window .wm-window-box header.wm-window-title h1 {
@@ -131,8 +135,8 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
-.wm-window .wm-window-box header.wm-window-title.light h1 {
-    color: #FFF !important;
+.wm-window .wm-window-box header.wm-window-title.dark h1 {
+    color: #FFFFFF !important;
 }
 
 .wm-window .wm-window-box header.wm-window-title .wm-button-group {
@@ -145,7 +149,7 @@
 .wm-window .wm-window-box header.wm-window-title button {
     -webkit-appearance: none;
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 8px;
     background: inherit;
     border: 0;
     padding: 0;
@@ -162,7 +166,7 @@
     background: url(../images/close.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.light button.wm-close {
+.wm-window .wm-window-box header.wm-window-title.dark button.wm-close {
     background: url(../images/close_light.svg) center center no-repeat;
 }
 
@@ -170,7 +174,7 @@
     background: url(../images/maximize.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.light button.wm-maximize {
+.wm-window .wm-window-box header.wm-window-title.dark button.wm-maximize {
     background: url(../images/maximize_light.svg) center center no-repeat;
 }
 
@@ -178,7 +182,7 @@
     background: url(../images/minimize.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.light button.wm-minimize {
+.wm-window .wm-window-box header.wm-window-title.dark button.wm-minimize {
     background: url(../images/minimize_light.svg) center center no-repeat;
 }
 
