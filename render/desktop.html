@@ -50,7 +50,7 @@
                 let theme = e.originalEvent.themeColor
                 win.$titlebar.css("background-color", theme)
 
-                if (color(theme).isDark()) win.$titlebar.addClass("light")
+                if (color(theme).isDark()) win.$titlebar.addClass("dark")
                 console.log(theme)
                 console.log(color(theme).isDark())
                 console.log(win.$titlebar)
@@ -58,17 +58,20 @@
 
             let win = wm.createWindow({
                 title: "Browser",
-                width: 400,
-                height: 280,
+                width: 1040,
+                height: 660,
                 content: webview
             })
 
             win.open()
+            //win.$titlebar.addClass("dark")
         }
 
         $(function() {
             setTimeout(() => $("body").fadeIn(250), 200)
-            setInterval(() => $("#clock").text(moment().format("h:mm A")), 150)
+            setInterval(() => {
+                if (!($("#clock").text() === moment().format("h:mm A"))) $("#clock").text(moment().format("h:mm A"))
+            }, 250)
 
             window.wm = new Ventus.WindowManager()
         })
@@ -81,14 +84,15 @@
     <div class="notifications"></div>
 
     <div class="toolbar">
-        <div class="apps">
-            <span id="app_launcher"><i class="material-icons">apps</i></span>
-            <span id="app_browser" onclick="newWin()"><i class="material-icons">public</i></span>
-        </div>
+        <ul class="apps">
+            <li id="app_launcher"><i class="material-icons">apps</i></li>
+            <li id="app_browser" onclick="newWin()"><img src="../system/images/chrome.png"></li>
+        </ul>
 
-        <div class="tray">
-            <span id="clock">__:__</span>
-        </div>
+        <ul class="tray">
+            <li id="clock">__:__</li>
+            <li id="user"><img id="userprofile" src="../users/kurisu/avatar.png"></li>
+        </ul>
     </div>
 
 </body>
