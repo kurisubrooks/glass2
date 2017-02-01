@@ -18,10 +18,10 @@ module.exports = wm => class Window {
         this.create();
     }
 
-    create(options) {
-        let webview = $(`<webview style='height:100%' src='http://google.com'></webview>`);
+    create() {
+        this.webview = $(`<webview style='height:100%' src='http://google.com'></webview>`);
 
-        webview.on("did-change-theme-color", e => {
+        this.webview.on("did-change-theme-color", e => {
             let theme = e.originalEvent.themeColor;
             
             win.$titlebar.css("background-color", theme);
@@ -36,7 +36,10 @@ module.exports = wm => class Window {
             title: this.title,
             width: this.size[0],
             height: this.size[1],
-            content: webview
+            content: this.webview,
+            events: {
+                closed: () => this.destroy()
+            }
         });
 
         console.log(win);
