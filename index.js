@@ -4,7 +4,6 @@ const url = require("url")
 const fs = require("fs")
 
 let win
-
 let startup = () => {
     win = new BrowserWindow({
         width: 1280,
