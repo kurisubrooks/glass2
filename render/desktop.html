@@ -32,7 +32,10 @@
     <script>
         window.$ = window.jQuery = require("jquery");
         window._ = require("lodash");
+        
+        require("../system/core/ventus");
 
+        const Ventus = window.Ventus;
         const remote = require("electron").remote;
         const moment = require("moment");
 
@@ -40,8 +43,6 @@
             .controller("desktop", ($scope) => { });
 
         $(() => {
-            require("../system/core/ventus");
-            const Ventus = window.Ventus;
             window.wm = new Ventus.WindowManager();
             const Window = require("../core/window")(wm);
 
