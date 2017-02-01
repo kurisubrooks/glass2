@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*!
  * Ventus 0.2.1
  * Copyright © 2015 Ramón Lamana

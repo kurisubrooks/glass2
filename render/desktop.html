@@ -30,52 +30,46 @@
     </style>
 
     <script>
+        window.$ = window.jQuery = require("jquery");
+        window._ = require("lodash");
 
-        window.$ = window.jQuery = require("jquery")
-        window._ = require("lodash")
-
-        const remote = require("electron").remote
-        const moment = require("moment")
-        const color = require("tinycolor2")
-        require("../system/core/ventus")
-        const Ventus = window.Ventus
+        const remote = require("electron").remote;
+        const moment = require("moment");
+        const color = require("tinycolor2");
+        require("../system/core/ventus");
+        const Ventus = window.Ventus;
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
-            .controller("desktop", ($scope) => { })
+            .controller("desktop", ($scope) => { });
 
-        function newWin() {
-            let webview = $("<webview style='height:100%' src='http://google.com'></webview>")
+        const newWin = () => {
+            let webview = $("<webview style='height:100%' src='http://google.com'></webview>");
 
             webview.on("did-change-theme-color", (e) => {
-                let theme = e.originalEvent.themeColor
-                win.$titlebar.css("background-color", theme)
+                let theme = e.originalEvent.themeColor;
+                win.$titlebar.css("background-color", theme);
 
-                if (color(theme).isDark()) win.$titlebar.addClass("dark")
-                console.log(theme)
-                console.log(color(theme).isDark())
-                console.log(win.$titlebar)
-            })
+                if (color(theme).isDark()) win.$titlebar.addClass("light");
+                console.log(theme);
+                console.log(color(theme).isDark());
+                console.log(win.$titlebar);
+            });
 
             let win = wm.createWindow({
                 title: "Browser",
-                width: 1040,
-                height: 660,
+                width: 400,
+                height: 280,
                 content: webview
-            })
+            });
 
-            win.open()
-            //win.$titlebar.addClass("dark")
-        }
+            win.open();
+        };
 
-        $(function() {
-            setTimeout(() => $("body").fadeIn(250), 200)
-            setInterval(() => {
-                if (!($("#clock").text() === moment().format("h:mm A"))) $("#clock").text(moment().format("h:mm A"))
-            }, 250)
-
-            window.wm = new Ventus.WindowManager()
-        })
-
+        $(() => {
+            setTimeout(() => $("body").fadeIn(250), 200);
+            setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
+            window.wm = new Ventus.WindowManager();
+        });
     </script>
 
 </head>
