@@ -11,7 +11,7 @@ module.exports = class Window {
         }
 
         if (!(this.size instanceof Array)) {
-            this.size = [200, 200];
+            this.size = [1280, 720];
             console.error("Window Size was not set");
         }
 
