@@ -1,6 +1,6 @@
 const color = require("tinycolor2");
 
-module.exports = wm => class Window {
+module.exports = class Window {
     constructor(options) {
         this.title = options.title;
         this.size = options.size;
@@ -38,11 +38,12 @@ module.exports = wm => class Window {
             height: this.size[1],
             content: this.webview,
             events: {
-                closed: () => this.destroy()
+                closed: () => {
+                    win.destroy();
+                    this.webview.remove();
+                }
             }
         });
-
-        console.log(win);
 
         win.open();
     }

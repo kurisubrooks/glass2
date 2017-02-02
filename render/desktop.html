@@ -32,7 +32,7 @@
     <script>
         window.$ = window.jQuery = require("jquery");
         window._ = require("lodash");
-        
+
         require("../system/core/ventus");
 
         const Ventus = window.Ventus;
@@ -44,7 +44,7 @@
 
         $(() => {
             window.wm = new Ventus.WindowManager();
-            const Window = require("../core/window")(wm);
+            const Window = require("../core/window");
 
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
