@@ -6,6 +6,7 @@ const fs = require("fs");
 let win;
 let startup = () => {
     win = new BrowserWindow({
+        title: "Loading...",
         width: 1280,
         minWidth: 1024,
         height: 720,
