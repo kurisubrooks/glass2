@@ -46,6 +46,7 @@
 .wm-space.fullscreen .wm-window {
     transform: translate(0, 0, 0);
     transition: all 0.5s ease-out;
+    border-radius: 0;
 }
 
 .wm-space.fullscreen header.wm-window-title {
