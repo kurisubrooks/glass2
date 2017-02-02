@@ -1,0 +1,59 @@
+.notifications {
+    position: absolute;
+    z-index: 10001;
+    bottom: 56px;
+    right: 0;
+}
+
+.notification {
+    background-color: #FFFFFF;
+    color: #000000;
+    cursor: default;
+    font-size: 14px;
+    width: 360px;
+    height: 100px;
+    padding: 16px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+.notification .content {
+    display: flex;
+    align-items: center;
+}
+
+.notification .content .message {
+    flex: 1;
+}
+
+.notification .content .image {
+    flex: 0;
+}
+
+.notification .app {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.notification .app img {
+    display: inline-block;
+    float: left;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.notification .content .message .title {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.notification .content .message .text {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.notification .content .image img {
+    display: block;
+    border-radius: 50%;
+    margin-left: 8px;
+    height: 48px;
+}
