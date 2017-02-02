@@ -8,8 +8,8 @@
     <link href="../system/design/core.css" rel="stylesheet">
     <link href="../system/design/desktop.css" rel="stylesheet">
     <link href="../system/design/ventus.css" rel="stylesheet">
-    <link href="../system/design/windows.css" rel="stylesheet">
     <link href="../system/design/toolbar.css" rel="stylesheet">
+    <link href="../system/design/notifications.css" rel="stylesheet">
 
     <link href="../node_modules/angular-material/angular-material.min.css" rel="stylesheet">
     <link href="../node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
             $("#app_browser").on("click", () => {
                 new Window({
                     title: "Browser",
-                    size: [1024, 1024]
+                    size: [1152, 648]
                 });
             });
         });
@@ -61,7 +61,22 @@
 </head>
 <body class="desktop" ng-app="desktop" ng-controller="desktop" ng-cloak>
 
-    <div class="notifications"></div>
+    <div class="notifications">
+        <div class="notification">
+            <div class="app" style="color:#7289DA;">
+                <img src="https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg"> Discord
+            </div>
+            <div class="content">
+                <div class="message">
+                    <div class="title">アリス</div>
+                    <div class="text">あたしのかわいいの後輩はどこ！？</div>
+                </div>
+                <div class="image">
+                    <img src="http://kurisubrooks.com/noutify/kaori.png">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="toolbar">
         <ul class="apps">

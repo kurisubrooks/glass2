@@ -1,14 +1,20 @@
 const bcrypt = require("bcrypt-nodejs");
 const fs = require("fs");
 
-module.exports = {
-    check: () => {
+module.exports = class User {
+    constructor() {
         return null;
-    },
-    new: () => {
+    }
+
+    check() {
         return null;
-    },
-    delete: () => {
+    }
+
+    new() {
+        return null;
+    }
+
+    delete() {
         return null;
     }
 };

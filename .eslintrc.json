@@ -80,7 +80,7 @@
     "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
     "no-array-constructor": "error",
     "no-console": 0,
-    "no-bitwise": "warn",
+    "no-bitwise": 0,
     "no-inline-comments": "error",
     "no-lonely-if": "error",
     "no-mixed-operators": "error",
