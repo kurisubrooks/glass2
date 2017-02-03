@@ -54,7 +54,7 @@ module.exports = class Notification {
 
         this.notif.hover(event => {
             if (event.type === "mouseenter") this.clear();
-            if (event.type === "mouseleave") this.destrioy();
+            if (event.type === "mouseleave") this.destroy();
         });
 
         this.notif.click(event => {
