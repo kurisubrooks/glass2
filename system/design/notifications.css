@@ -1,24 +1,34 @@
 .notifications {
     position: absolute;
     z-index: 10001;
-    bottom: 56px;
+    bottom: 70px;
     right: 0;
+}
+
+.notifications.pos-top-right {
+    top: 50px !important;
+}
+
+.notifications.pos-bottom-right {
+    bottom: 70px !important;
+}
+
+.notifications.pos-right-pad {
+    right: 14px !important;
 }
 
 .notification {
     background-color: #FFFFFF;
     color: #000000;
-    cursor: default;
+    cursor: pointer;
     font-size: 14px;
-    width: 360px;
-    height: 100px;
-    padding: 16px;
+    width: 380px;
+    padding: 14px 20px;
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
 .notification .content {
     display: flex;
-    align-items: center;
 }
 
 .notification .content .message {
@@ -31,7 +41,8 @@
 
 .notification .app {
     font-size: 12px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .notification .app img {
@@ -43,7 +54,10 @@
 
 .notification .content .message .title {
     font-size: 16px;
+    line-height: 18px;
     color: rgba(0, 0, 0, 1);
+    margin-bottom: 4px;
+    vertical-align: bottom;
 }
 
 .notification .content .message .text {
@@ -55,5 +69,5 @@
     display: block;
     border-radius: 50%;
     margin-left: 8px;
-    height: 48px;
+    height: 42px;
 }

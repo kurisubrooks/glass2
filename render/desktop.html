@@ -44,7 +44,9 @@
 
         $(() => {
             window.wm = new Ventus.WindowManager();
+
             const Window = require("../core/window");
+            const Notification = require("../core/notification");
 
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
@@ -55,28 +57,30 @@
                     size: [1152, 648]
                 });
             });
+
+            new Notification({
+                app: "Discord",
+                title: "アリス",
+                message: "あたしのかわいいの後輩はどこ！？",
+                image: "http://kurisubrooks.com/noutify/kaori.png",
+                icon: "https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg",
+                colour: "#7289DA"
+            })
+
+            setTimeout(() => {
+                new Notification({
+                    title: "vzwGrey",
+                    message: "I think both are good",
+                    image: "https://cdn.discordapp.com/avatars/86890631690977280/e993a8110354ba7a0cf2798f50c244e4.png"
+                });
+            }, 700);
         });
     </script>
 
 </head>
 <body class="desktop" ng-app="desktop" ng-controller="desktop" ng-cloak>
 
-    <div class="notifications">
-        <div class="notification">
-            <div class="app" style="color:#7289DA;">
-                <img src="https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg"> Discord
-            </div>
-            <div class="content">
-                <div class="message">
-                    <div class="title">アリス</div>
-                    <div class="text">あたしのかわいいの後輩はどこ！？</div>
-                </div>
-                <div class="image">
-                    <img src="http://kurisubrooks.com/noutify/kaori.png">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="notifications pos-bottom-right" id="breadbox"></div>
 
     <div class="toolbar">
         <ul class="apps">
