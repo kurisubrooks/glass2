@@ -33,11 +33,11 @@ module.exports = class Window {
             let theme = event.originalEvent.themeColor;
 
             this.window.$titlebar.css("background-color", theme);
+            if (color(theme).isDark()) this.window.$titlebar.addClass("dark");
+        });
 
-            if (color(theme).isDark()) {
-                this.window.$titlebar.addClass("dark");
-                console.log("Dark Theme");
-            }
+        this.webview.on("page-title-updated", event => {
+            this.window.$titlebar.find("h1").text(event.originalEvent.title);
         });
 
         this.window = wm.createWindow({
