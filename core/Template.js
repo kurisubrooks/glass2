@@ -8,10 +8,7 @@ class Template {
     }
 
     build(replacements) {
-        const templateRender = this.template.replace(/{{\s*(\w+)\s*}}/g, (match, tag) => {
-            return replacements[tag];
-        });
-
+        const templateRender = this.template.replace(/{{\s*(\w+)\s*}}/g, (match, tag) => replacements[tag]);
         return $(templateRender);
     }
 }
