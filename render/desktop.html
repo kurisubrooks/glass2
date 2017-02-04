@@ -35,13 +35,12 @@
         const moment = require("moment");
 
         const WindowManager = require("../core/WindowManager");
+        const Notification = require("../core/notification");
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
 
         $(() => {
-            // const Notification = require("../core/notification");
-
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
 
@@ -53,22 +52,13 @@
                 }).openIn($(".window-space"));
             });
 
-            /*new Notification({
-                app: "Discord",
-                title: "アリス",
-                message: "あたしのかわいいの後輩はどこ！？",
-                image: "http://kurisubrooks.com/noutify/kaori.png",
-                icon: "https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg",
-                colour: "#7289DA"
-            })
-
             setTimeout(() => {
                 new Notification({
-                    title: "vzwGrey",
-                    message: "I think both are good",
-                    image: "https://cdn.discordapp.com/avatars/86890631690977280/e993a8110354ba7a0cf2798f50c244e4.png"
+                    title: "System",
+                    message: "Initialised",
+                    image: "../system/images/system.png"
                 });
-            }, 700);*/
+            }, 700);
         });
     </script>
 
