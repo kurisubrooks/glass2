@@ -1,5 +1,4 @@
 const Window = require("./Window");
-
 const windows = {};
 
 class WindowManager {

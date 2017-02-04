@@ -1,7 +1,5 @@
 const color = require("tinycolor2");
-
 const Template = require("./Template");
-
 const guid = require("../util/guid");
 
 module.exports = class Window {
