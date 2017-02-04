@@ -22,34 +22,34 @@
 
 /* Exposé */
 
-.window-space.expose .window {
+.desktop.expose .window {
     border-radius: 0;
 }
 
-.window-space.expose .window:hover {
+.desktop.expose .window:hover {
     box-shadow: 0 0 0 3px white;
 }
 
-.window-space.expose .window.active, .window-space.expose .window {
+.desktop.expose .window.active, .desktop.expose .window {
     transform: translate(0, 0, 0);
     transition: top 0.5s ease-out, left 0.5s ease-out;
 }
 
-.window-space.expose .window.active section.window-content,
-.window-space.expose .window section.window-content {
+.desktop.expose .window.active section.window-content,
+.desktop.expose .window section.window-content {
     -webkit-user-select: none;
     user-select: none;
 }
 
 /* Window Fullscreen */
 
-.window-space.fullscreen .window {
+.desktop.fullscreen .window {
     transform: translate(0, 0, 0);
     transition: all 0.5s ease-out;
     border-radius: 0;
 }
 
-.window-space.fullscreen header.window-title {
+.desktop.fullscreen header.window-title {
     transition: all 0.5s ease-out;
     height: 50px;
     font-size: 40px;
@@ -57,21 +57,21 @@
     background: transparent;
 }
 
-.window-space.fullscreen header.window-title .window-buttons {
+.desktop.fullscreen header.window-title .window-buttons {
     display: none;
 }
 
-.window-space.fullscreen header.window-title h1 {
+.desktop.fullscreen header.window-title h1 {
     transition: all 0.5s ease-out;
     font-size: 40px;
 }
 
-.window-space.fullscreen section.window-content {
+.desktop.fullscreen section.window-content {
     transition: all 0.5s ease-out;
     padding: 0 40px;
 }
 
-.window-space.fullscreen .window-resize {
+.desktop.fullscreen .window-resize {
     display: none;
 }
 
@@ -291,7 +291,7 @@
     display: none;
 }
 
-.window-space {
+.desktop {
     -webkit-user-select: none;
     user-select: none;
     width: 100%;
@@ -301,7 +301,7 @@
     cursor: default;
 }
 
-.window-space .wm-overlay {
+.desktop .wm-overlay {
     -webkit-user-select: none;
     user-select: none;
     background-color: #000;

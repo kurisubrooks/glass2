@@ -49,7 +49,7 @@
                     title: "Browser",
                     size: [1280, 720],
                     content: `<webview style="height:100%" src="http://google.com"></webview>`
-                }).openIn($(".window-space"));
+                }).openIn($(".desktop"));
             });
 
             setTimeout(() => {
@@ -63,9 +63,9 @@
     </script>
 
 </head>
-<body class="desktop" ng-app="desktop" ng-controller="desktop" ng-cloak>
+<body>
 
-    <div class="window-space"></div>
+    <div class="desktop"></div>
 
     <div class="notifications pos-bottom-right" id="breadbox"></div>
 
