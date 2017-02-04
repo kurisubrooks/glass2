@@ -1,5 +1,4 @@
-const $ = window.jQuery = require("jquery");
-
+const $ = require("jquery");
 const guid = require("../util/guid");
 
 const fadeRemove = (el, sp) => el.fadeOut(sp || "fast", () => el.remove());
