@@ -1,10 +1,8 @@
 const $ = window.jQuery = require("jquery");
 
+const guid = require("../util/guid");
+
 const fadeRemove = (el, sp) => el.fadeOut(sp || "fast", () => el.remove());
-const guid = () => {
-    let s4 = () => (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
-};
 
 let notifications = {};
 

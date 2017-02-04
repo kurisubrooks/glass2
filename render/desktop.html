@@ -7,7 +7,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link href="../system/design/core.css" rel="stylesheet">
     <link href="../system/design/desktop.css" rel="stylesheet">
-    <link href="../system/design/ventus.css" rel="stylesheet">
+    <link href="../system/design/window.css" rel="stylesheet">
     <link href="../system/design/toolbar.css" rel="stylesheet">
     <link href="../system/design/notifications.css" rel="stylesheet">
 
@@ -30,35 +30,30 @@
     </style>
 
     <script>
-        window.$ = window.jQuery = require("jquery");
-        window._ = require("lodash");
-
-        require("../system/core/ventus");
-
-        const Ventus = window.Ventus;
+        const $ = require("jquery");
         const remote = require("electron").remote;
         const moment = require("moment");
+
+        const WindowManager = require("../core/WindowManager");
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
 
         $(() => {
-            window.wm = new Ventus.WindowManager();
-
-            const Window = require("../core/window");
-            const Notification = require("../core/notification");
+            // const Notification = require("../core/notification");
 
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
 
             $("#app_browser").on("click", () => {
-                new Window({
+                WindowManager.createWindow({
                     title: "Browser",
-                    size: [1152, 648]
-                });
+                    size: [1280, 720],
+                    content: `<webview style="height:100%" src="http://google.com"></webview>`
+                }).openIn($(".window-space"));
             });
 
-            new Notification({
+            /*new Notification({
                 app: "Discord",
                 title: "アリス",
                 message: "あたしのかわいいの後輩はどこ！？",
@@ -73,12 +68,14 @@
                     message: "I think both are good",
                     image: "https://cdn.discordapp.com/avatars/86890631690977280/e993a8110354ba7a0cf2798f50c244e4.png"
                 });
-            }, 700);
+            }, 700);*/
         });
     </script>
 
 </head>
 <body class="desktop" ng-app="desktop" ng-controller="desktop" ng-cloak>
+
+    <div class="window-space"></div>
 
     <div class="notifications pos-bottom-right" id="breadbox"></div>
 

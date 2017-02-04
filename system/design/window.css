@@ -22,34 +22,34 @@
 
 /* Exposé */
 
-.wm-space.expose .wm-window {
+.window-space.expose .window {
     border-radius: 0;
 }
 
-.wm-space.expose .wm-window:hover {
+.window-space.expose .window:hover {
     box-shadow: 0 0 0 3px white;
 }
 
-.wm-space.expose .wm-window.active, .wm-space.expose .wm-window {
+.window-space.expose .window.active, .window-space.expose .window {
     transform: translate(0, 0, 0);
     transition: top 0.5s ease-out, left 0.5s ease-out;
 }
 
-.wm-space.expose .wm-window.active section.wm-content,
-.wm-space.expose .wm-window section.wm-content {
+.window-space.expose .window.active section.window-content,
+.window-space.expose .window section.window-content {
     -webkit-user-select: none;
     user-select: none;
 }
 
 /* Window Fullscreen */
 
-.wm-space.fullscreen .wm-window {
+.window-space.fullscreen .window {
     transform: translate(0, 0, 0);
     transition: all 0.5s ease-out;
     border-radius: 0;
 }
 
-.wm-space.fullscreen header.wm-window-title {
+.window-space.fullscreen header.window-title {
     transition: all 0.5s ease-out;
     height: 50px;
     font-size: 40px;
@@ -57,28 +57,27 @@
     background: transparent;
 }
 
-.wm-space.fullscreen header.wm-window-title .wm-button-group {
+.window-space.fullscreen header.window-title .window-buttons {
     display: none;
 }
 
-.wm-space.fullscreen header.wm-window-title h1 {
+.window-space.fullscreen header.window-title h1 {
     transition: all 0.5s ease-out;
     font-size: 40px;
 }
 
-.wm-space.fullscreen section.wm-content {
+.window-space.fullscreen section.window-content {
     transition: all 0.5s ease-out;
     padding: 0 40px;
 }
 
-.wm-space.fullscreen .wm-resize {
+.window-space.fullscreen .window-resize {
     display: none;
 }
 
 /* Window Styling */
 
-.wm-window {
-    display: none;
+.window {
     -webkit-user-select: none;
     user-select: none;
     overflow: hidden;
@@ -90,11 +89,11 @@
     border-radius: 3px;
 }
 
-.wm-window .wm-window-overlay {
+.window .window-overlay {
     display: none;
 }
 
-.wm-window .wm-window-box {
+.window .window-box {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -102,7 +101,7 @@
     width: 100%;
 }
 
-.wm-window .wm-window-box header.wm-window-title {
+.window .window-box header.window-title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -117,11 +116,11 @@
     overflow: hidden;
 }
 
-.wm-window .wm-window-box header.wm-window-title.dark {
+.window .window-box header.window-title.dark {
     background: #282B2D;
 }
 
-.wm-window .wm-window-box header.wm-window-title h1 {
+.window .window-box header.window-title h1 {
     flex: 1;
     display: flex;
     flex-direction: row;
@@ -136,18 +135,18 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
-.wm-window .wm-window-box header.wm-window-title.dark h1 {
+.window .window-box header.window-title.dark h1 {
     color: #FFFFFF !important;
 }
 
-.wm-window .wm-window-box header.wm-window-title .wm-button-group {
+.window .window-box header.window-title .window-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 2px;
 }
 
-.wm-window .wm-window-box header.wm-window-title button {
+.window .window-box header.window-title button {
     -webkit-appearance: none;
     display: inline-block;
     margin-left: 8px;
@@ -158,40 +157,40 @@
     height: 20px;
 }
 
-.wm-window .wm-window-box header.wm-window-title button:hover {
+.window .window-box header.window-title button:hover {
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
 }
 
-.wm-window .wm-window-box header.wm-window-title button.wm-close {
+.window .window-box header.window-title button.window-close {
     background: url(../images/close.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.dark button.wm-close {
+.window .window-box header.window-title.dark button.window-close {
     background: url(../images/close_light.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title button.wm-maximize {
+.window .window-box header.window-title button.window-maximize {
     background: url(../images/maximize.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.dark button.wm-maximize {
+.window .window-box header.window-title.dark button.window-maximize {
     background: url(../images/maximize_light.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title button.wm-minimize {
+.window .window-box header.window-title button.window-minimize {
     background: url(../images/minimize.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.dark button.wm-minimize {
+.window .window-box header.window-title.dark button.window-minimize {
     background: url(../images/minimize_light.svg) center center no-repeat;
 }
 
-.wm-window .wm-window-box header.wm-window-title.hide {
+.window .window-box header.window-title.hide {
     display: none;
 }
 
-.wm-window .wm-window-box section.wm-content {
+.window .window-box section.window-content {
     display: block;
     flex: 1;
     min-height: 60px;
@@ -199,7 +198,7 @@
     overflow-y: auto;
 }
 
-.wm-window .wm-window-box button.wm-resize {
+.window .window-box button.window-resize {
     position: absolute;
     bottom: 0;
     right: 4px;
@@ -215,12 +214,12 @@
     width: 10px;
 }
 
-.wm-window.disabled * {
+.window.disabled * {
     -webkit-user-select: none;
     user-select: none;
 }
 
-.wm-window.disabled .wm-window-overlay {
+.window.disabled .window-overlay {
     display: block;
     position: absolute;
     top: 0;
@@ -232,67 +231,67 @@
     z-index: 30000;
 }
 
-.wm-window.inactive * {
+.window.inactive * {
     -webkit-user-select: none;
     user-select: none;
 }
 
-.wm-window.inactive header.wm-window-title {
+.window.inactive header.window-title {
     background-color: #DDD;
 }
 
-.wm-window.inactive header.wm-window-title h1 {
+.window.inactive header.window-title h1 {
     color: rgba(0, 0, 0, 0.5);
 }
 
-.wm-window.active .wm-content * {
+.window.active .window-content * {
     -webkit-user-select: text;
     user-select: text;
 }
 
-.wm-window.noresizable .wm-window-box header.wm-window-title button.wm-maximize, .wm-window.noresizable .wm-window-box header.wm-window-title button.wm-minimize {
+.window.noresizable .window-box header.window-title button.window-maximize, .window.noresizable .window-box header.window-title button.window-minimize {
     display: none;
 }
 
-.wm-window.noresizable .wm-window-box section.wm-content {
+.window.noresizable .window-box section.window-content {
     overflow-y: hidden;
 }
 
-.wm-window.noresizable .wm-window-box button.wm-resize {
+.window.noresizable .window-box button.window-resize {
     display: none;
 }
 
-.wm-window.minimizing, .wm-window.maximazing {
+.window.minimizing, .window.maximizing {
     transform: translate(0, 0, 0);
     transition: all 0.2s ease-out;
 }
 
-.wm-window.closing {
+.window.closing {
     animation: close 0.1s 1 ease-in forwards;
 }
 
-.wm-window.opening {
+.window.opening {
     animation: appear 0.2s 1 ease-out forwards;
 }
 
-.wm-window.resizing {
+.window.resizing {
     transition: none;
 }
 
-.wm-window.move {
+.window.move {
     /*animation: wobbly 0.5s 0.2s infinite;*/
 }
 
-.wm-window.move * {
+.window.move * {
     -webkit-user-select: none;
     user-select: none;
 }
 
-.wm-window.closed {
+.window.closed {
     display: none;
 }
 
-.wm-space {
+.window-space {
     -webkit-user-select: none;
     user-select: none;
     width: 100%;
@@ -302,7 +301,7 @@
     cursor: default;
 }
 
-.wm-space .wm-overlay {
+.window-space .wm-overlay {
     -webkit-user-select: none;
     user-select: none;
     background-color: #000;

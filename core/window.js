@@ -1,58 +1,71 @@
-const $ = window.jQuery = require("jquery");
-const wm = window.wm;
-
 const color = require("tinycolor2");
-const guid = () => {
-    let s4 = () => (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
-};
+
+const Template = require("./Template");
+
+const guid = require("../util/guid");
 
 module.exports = class Window {
     constructor(options) {
+        if (!options.title) throw new Error("Window title must not be missing.");
+        if (!options.content) throw new Error("Window content must not be missing.");
+        if (!options.size) throw new Error("Window size must not be missing.");
+        if (typeof options.title !== "string") throw new TypeError("Window title must be a string.");
+        if (typeof options.content !== "string") throw new TypeError("Window content must be a string.");
+        if (!Array.isArray(options.size)) throw new TypeError("Window size must be an array.");
+        if (!options.size.length || options.size.length > 2) throw new Error("Invalid window size.");
+
         this.title = options.title;
         this.size = options.size;
+        this.content = options.content;
         this.id = guid();
+        this.maximized = false;
 
-        if (typeof this.title !== "string") {
-            this.title = "Window";
-            console.error(`Window Title was not set, using "Window"`);
-        }
-
-        if (!(this.size instanceof Array)) {
-            this.size = [1280, 720];
-            console.error(`Window Size was not set, using 720p`);
-        }
-
-        this.create();
-    }
-
-    create() {
-        this.webview = $(`<webview style="height:100%" src="http://google.com"></webview>`);
-
-        this.webview.on("did-change-theme-color", event => {
-            let theme = event.originalEvent.themeColor;
-
-            this.window.$titlebar.css("background-color", theme);
-            if (color(theme).isDark()) this.window.$titlebar.addClass("dark");
-        });
-
-        this.webview.on("page-title-updated", event => {
-            this.window.$titlebar.find("h1").text(event.originalEvent.title);
-        });
-
-        this.window = wm.createWindow({
+        this.window = new Template("window").build({
             title: this.title,
+            content: this.content,
+            id: this.id,
             width: this.size[0],
-            height: this.size[1],
-            content: this.webview,
-            events: { closed: () => this.destroy() }
+            height: this.size[1]
         });
-
-        this.window.open();
     }
 
-    destroy() {
-        this.window.destroy();
-        this.webview.remove();
+    openIn(windowArea) {
+        windowArea.append(this.window);
+
+        const webview = this.window.find("webview");
+        const header = this.window.find("header");
+
+        webview.on("did-change-theme-color", event => {
+            const theme = event.originalEvent.themeColor;
+
+            header.css("background-color", theme);
+            if (color(theme).isDark()) header.addClass("dark");
+        });
+
+        webview.on("page-title-updated", event => {
+            header.find("h1").text(event.originalEvent.title);
+        });
+
+        return this;
+    }
+
+    minimize() {
+        this.window.addClass("closed");
+    }
+
+    maximize() {
+        if (!this.maximized) {
+            this.window.width(this.window.parent().width());
+            this.window.height(this.window.parent().height());
+        } else {
+            this.window.width(this.size[0]);
+            this.window.height(this.size[1]);
+        }
+
+        this.maximized = !this.maximized;
+    }
+
+    close() {
+        this.window.remove();
     }
 };
