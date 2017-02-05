@@ -34,10 +34,14 @@
         const remote = require("electron").remote;
         const moment = require("moment");
 
-        const BrowserApp = require("../apps/Browser/main");
+        // Core
         const WindowManager = require("../core/WindowManager");
         const Notification = require("../core/Notification");
         const Taskbar = require("../core/Taskbar");
+
+        // Apps
+        const BrowserApp = require("../apps/Browser/main");
+        const TerminalApp = require("../apps/Terminal/main");
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
@@ -48,8 +52,10 @@
 
             const taskbar = new Taskbar(".toolbar");
             const browser = new BrowserApp();
+            const terminal = new TerminalApp();
 
             taskbar.addPin(browser);
+            taskbar.addPin(terminal);
 
             setTimeout(() => {
                 new Notification({
