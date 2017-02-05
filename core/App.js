@@ -16,10 +16,19 @@ class App {
         console.log(this.name);
     }
 
+    get theme() {
+        return "light";
+    }
+
+    get size() {
+        return [1280, 720];
+    }
+
     onClick() {
         WindowManager.createWindow({
             title: this.name,
-            size: [1280, 720],
+            size: this.size,
+            theme: this.theme,
             content: this.content
         }).openIn(".desktop");
     }
