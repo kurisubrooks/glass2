@@ -57,9 +57,13 @@ class Window {
         if (!this.maximized) {
             this.window.width(this.window.parent().width());
             this.window.height(this.window.parent().height());
+
+            this.window.addClass("maximized");
         } else {
             this.window.width(this.size[0]);
             this.window.height(this.size[1]);
+
+            this.window.removeClass("maximized");
         }
 
         this.maximized = !this.maximized;
