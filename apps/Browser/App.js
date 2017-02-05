@@ -1,9 +1,9 @@
-const App = require("./App");
-const WindowManager = require("../WindowManager");
+const App = require("../../core/App");
+const WindowManager = require("../../core/WindowManager");
 
 class BrowserApp extends App {
     constructor() {
-        super("Browser", "chrome.png");
+        super("Browser");
     }
 
     onClick() {
