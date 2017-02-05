@@ -1,48 +1,52 @@
 const $ = require("jquery");
 const moment = require("moment");
 
+const App = require("./apps/App");
+const Template = require("./Template");
+
 module.exports = class Taskbar {
-    constructor(options) {
+    constructor(container) {
         this.clock = moment().format("h:mm A");
+        this.container = $(container);
+        this.apps = new Map();
 
-        // set other things
+        this.toolbar = new Template("toolbar").build();
+
+        // toolbar.hide();
+        this.container.append(this.toolbar);
+        // toolbar.slideUp();
+
+        this.appArea = this.toolbar.find(".apps");
     }
 
-    /*
-    <div class="toolbar">
-        <ul class="apps">
-            <li id="app_launcher"><i class="material-icons">apps</i></li>
-            <li id="app_browser"><img src="../system/images/chrome.png"></li>
-        </ul>
+    addPin(app) {
+        this.apps.set(app.id, app);
 
-        <ul class="tray">
-            <li id="clock">__:__</li>
-            <li id="user"><img id="userprofile" src="../users/kurisu/avatar.png"></li>
-        </ul>
-    </div>
-    */
+        const appItem = new Template("toolbarItem").build({
+            id: app.id,
+            name: app.name,
+            icon: app.icon
+        });
 
-    spawn() {
-        const container = $(`body`);
-        const toolbar = $(`<div class="toolbar"></div>`);
-        const apps = $(`<ul class="apps"></ul>`);
-        const tray = $(`<ul class="tray"></ul>`);
-
-        toolbar.hide();
-        toolbar.append(apps);
-        toolbar.append(tray);
-        container.append(toolbar);
-        toolbar.slideUp();
-
-        this.toolbar = toolbar;
+        appItem.on("click", app.onClick);
+        this.appArea.append(appItem);
     }
 
-    static addItem() {
-        // add item to .apps
+    removePin(app) {
+        this.apps.delete(app.id);
+
+        const appItem = this.appArea.find(`#${app.id}`);
+        appItem.remove();
     }
 
-    static removeItem() {
-        // remove item from .apps
+    getPins() {
+        return this.apps;
+    }
+
+    hasPin(app) {
+        if (app instanceof App) return this.apps.has(app.id);
+        if (typeof app === "string") return this.apps.has(app);
+        return false;
     }
 
     static addMeta() {

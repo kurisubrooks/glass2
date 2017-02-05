@@ -1,4 +1,6 @@
+const $ = require("jquery");
 const color = require("tinycolor2");
+
 const Template = require("./Template");
 const guid = require("../util/guid");
 
@@ -28,7 +30,7 @@ module.exports = class Window {
     }
 
     openIn(windowArea) {
-        windowArea.append(this.window);
+        $(windowArea).append(this.window);
 
         const webview = this.window.find("webview");
         const header = this.window.find("header");

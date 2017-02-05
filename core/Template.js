@@ -7,7 +7,7 @@ class Template {
         this.template = fs.readFileSync(path.join(__dirname, "..", "render", "templates", `${name}.html`), "utf8");
     }
 
-    build(replacements) {
+    build(replacements = {}) {
         const templateRender = this.template.replace(/{{\s*(\w+)\s*}}/g, (match, tag) => replacements[tag]);
         return $(templateRender);
     }

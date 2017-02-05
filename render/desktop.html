@@ -34,8 +34,10 @@
         const remote = require("electron").remote;
         const moment = require("moment");
 
+        const BrowserApp = require("../core/apps/BrowserApp");
         const WindowManager = require("../core/WindowManager");
-        const Notification = require("../core/notification");
+        const Notification = require("../core/Notification");
+        const Taskbar = require("../core/Taskbar");
 
         angular.module("desktop", ["ngMaterial", "ngMdIcons"])
             .controller("desktop", ($scope) => { });
@@ -44,13 +46,10 @@
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
 
-            $("#app_browser").on("click", () => {
-                WindowManager.createWindow({
-                    title: "Browser",
-                    size: [1280, 720],
-                    content: `<webview style="height:100%" src="http://google.com"></webview>`
-                }).openIn($(".desktop"));
-            });
+            const taskbar = new Taskbar("body");
+            const browser = new BrowserApp();
+
+            taskbar.addPin(browser);
 
             setTimeout(() => {
                 new Notification({
@@ -68,18 +67,6 @@
     <div class="desktop"></div>
 
     <div class="notifications pos-bottom-right" id="breadbox"></div>
-
-    <div class="toolbar">
-        <ul class="apps">
-            <li id="app_launcher"><i class="material-icons">apps</i></li>
-            <li id="app_browser"><img src="../system/images/chrome.png"></li>
-        </ul>
-
-        <ul class="tray">
-            <li id="clock">__:__</li>
-            <li id="user"><img id="userprofile" src="../users/kurisu/avatar.png"></li>
-        </ul>
-    </div>
 
 </body>
 </html>
