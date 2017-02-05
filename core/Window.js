@@ -17,6 +17,7 @@ class Window {
         this.title = options.title;
         this.size = options.size;
         this.content = options.content;
+        this.theme = options.theme || "light";
         this.id = guid();
         this.maximized = false;
 
@@ -27,6 +28,8 @@ class Window {
             width: this.size[0],
             height: this.size[1]
         });
+
+        if (this.theme === "dark") this.window.addClass("dark");
     }
 
     openIn(windowArea) {

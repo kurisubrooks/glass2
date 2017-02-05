@@ -30,7 +30,8 @@
     box-shadow: 0 0 0 3px white;
 }
 
-.desktop.expose .window.active, .desktop.expose .window {
+.desktop.expose .window.active,
+.desktop.expose .window {
     transform: translate(0, 0, 0);
     transition: top 0.5s ease-out, left 0.5s ease-out;
 }
@@ -84,9 +85,13 @@
     position: absolute;
     min-width: 200px;
     min-height: 60px;
-    background-color: #FFF;
+    background: #FFF;
     box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
+}
+
+.window.maximized {
+    border-radius: 0;
 }
 
 .window .window-overlay {
@@ -116,8 +121,8 @@
     overflow: hidden;
 }
 
-.window .window-box header.window-title.dark {
-    background: #282B2D;
+.window.dark .window-box header.window-title {
+    background: #252525;
 }
 
 .window .window-box header.window-title h1 {
@@ -135,8 +140,8 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
-.window .window-box header.window-title.dark h1 {
-    color: #FFFFFF !important;
+.window.dark .window-box header.window-title h1 {
+    color: #FFFFFF;
 }
 
 .window .window-box header.window-title .window-buttons {
@@ -166,7 +171,7 @@
     background: url(../images/close.svg) center center no-repeat;
 }
 
-.window .window-box header.window-title.dark button.window-close {
+.window.dark .window-box header.window-title button.window-close {
     background: url(../images/close_light.svg) center center no-repeat;
 }
 
@@ -174,7 +179,7 @@
     background: url(../images/maximize.svg) center center no-repeat;
 }
 
-.window .window-box header.window-title.dark button.window-maximize {
+.window.dark .window-box header.window-title button.window-maximize {
     background: url(../images/maximize_light.svg) center center no-repeat;
 }
 
@@ -182,7 +187,7 @@
     background: url(../images/minimize.svg) center center no-repeat;
 }
 
-.window .window-box header.window-title.dark button.window-minimize {
+.window.dark .window-box header.window-title button.window-minimize {
     background: url(../images/minimize_light.svg) center center no-repeat;
 }
 
@@ -249,7 +254,8 @@
     user-select: text;
 }
 
-.window.noresizable .window-box header.window-title button.window-maximize, .window.noresizable .window-box header.window-title button.window-minimize {
+.window.noresizable .window-box header.window-title button.window-maximize,
+.window.noresizable .window-box header.window-title button.window-minimize {
     display: none;
 }
 
