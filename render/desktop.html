@@ -46,7 +46,7 @@
             setTimeout(() => $("body").fadeIn(250), 200);
             setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
 
-            const taskbar = new Taskbar("body");
+            const taskbar = new Taskbar(".toolbar");
             const browser = new BrowserApp();
 
             taskbar.addPin(browser);
@@ -67,6 +67,8 @@
     <div class="desktop"></div>
 
     <div class="notifications pos-bottom-right" id="breadbox"></div>
+
+    <div class="toolbar"></div>
 
 </body>
 </html>
