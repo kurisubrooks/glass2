@@ -12,11 +12,9 @@ class Taskbar {
 
         this.toolbar = new Template("toolbar").build();
 
-        // toolbar.hide();
         this.container.append(this.toolbar);
-        // toolbar.slideUp();
 
-        this.appArea = this.toolbar.find(".apps");
+        this.appArea = this.container.find(".apps");
     }
 
     addPin(app) {
