@@ -26,7 +26,7 @@ class Taskbar {
             icon: app.icon
         });
 
-        appItem.on("click", app.onClick);
+        appItem.on("click", app.onClick.bind(app));
         this.appArea.append(appItem);
     }
 
