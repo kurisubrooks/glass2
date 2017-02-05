@@ -1,10 +1,10 @@
 const $ = require("jquery");
 const moment = require("moment");
 
-const App = require("./apps/App");
+const App = require("./App");
 const Template = require("./Template");
 
-module.exports = class Taskbar {
+class Taskbar {
     constructor(container) {
         this.clock = moment().format("h:mm A");
         this.container = $(container);
@@ -52,4 +52,6 @@ module.exports = class Taskbar {
     static addMeta() {
         // add item to .tray popover
     }
-};
+}
+
+module.exports = Taskbar;

@@ -4,7 +4,7 @@ const color = require("tinycolor2");
 const Template = require("./Template");
 const guid = require("../util/guid");
 
-module.exports = class Window {
+class Window {
     constructor(options) {
         if (!options.title) throw new Error("Window title must not be missing.");
         if (!options.content) throw new Error("Window content must not be missing.");
@@ -68,4 +68,6 @@ module.exports = class Window {
     close() {
         this.window.remove();
     }
-};
+}
+
+module.exports = Window;
