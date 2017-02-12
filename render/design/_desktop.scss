@@ -1,0 +1,9 @@
+main {
+    display: none;
+    background: url(../../system/images/wallpaper.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+@import "toolbar";
+@import "window";
+@import "notifications";

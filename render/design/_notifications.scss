@@ -1,0 +1,73 @@
+.notifications {
+    position: absolute;
+    z-index: 10001;
+    bottom: 70px;
+    right: 0;
+
+    &.pos-top-right {
+        top: 50px !important;
+    }
+
+    &.pos-bottom-right {
+        bottom: 70px !important;
+    }
+
+    &.pos-right-pad {
+        right: 14px !important;
+    }
+
+    .notification {
+        background-color: $white;
+        color: $black;
+        cursor: pointer;
+        font-size: 14px;
+        width: 380px;
+        padding: 14px 20px;
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+
+        .content {
+            display: flex;
+
+            .message {
+                flex: 1;
+
+                .title {
+                    font-size: 16px;
+                    line-height: 18px;
+                    color: $black;
+                    margin-bottom: 4px;
+                    vertical-align: bottom;
+                }
+
+                .text {
+                    font-size: 16px;
+                    color: rgba(0, 0, 0, 0.7);
+                }
+            }
+
+            .image {
+                flex: 0;
+
+                img {
+                    display: block;
+                    border-radius: 50%;
+                    margin-left: 8px;
+                    height: 42px;
+                }
+            }
+        }
+
+        .app {
+            font-size: 12px;
+            margin-bottom: 10px;
+            font-weight: 500;
+
+            img {
+                display: inline-block;
+                float: left;
+                height: 16px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
