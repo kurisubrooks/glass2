@@ -29,6 +29,21 @@
         }, 5000);
     </script>
 
+    <style>
+        html, body {
+            background: #000000;
+        }
+
+        img {
+            animation: startup .2s;
+        }
+
+        @keyframes startup {
+            0%    { opacity: 0; }
+            100%  { opacity: 1; }
+        }
+    </style>
+
 </head>
 <body ng-app="startup" ng-controller="startup" ng-cloak>
 
