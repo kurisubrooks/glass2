@@ -1,0 +1,15 @@
+{
+  "name": "glass2",
+  "version": "0.0.0",
+  "description": "HTML5 Desktop Operating System",
+  "main": "./dist/main.js",
+  "dependencies": {
+    "vue": "^2.1.10",
+    "vue-electron": "^1.0.6",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.2",
+    "vuex": "^2.1.1"
+  },
+  "devDependencies": {},
+  "author": "kurisubrooks"
+}
