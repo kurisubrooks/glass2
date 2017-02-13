@@ -5,50 +5,35 @@
     <meta charset="utf-8">
     <title>Desktop</title>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <link href="../system/design/core.css" rel="stylesheet">
-    <link href="../system/design/desktop.css" rel="stylesheet">
-    <link href="../system/design/window.css" rel="stylesheet">
-    <link href="../system/design/toolbar.css" rel="stylesheet">
-    <link href="../system/design/notifications.css" rel="stylesheet">
-
-    <link href="../node_modules/angular-material/angular-material.min.css" rel="stylesheet">
-    <link href="../node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet">
-
-    <script src="../node_modules/angular/angular.js"></script>
-    <script src="../node_modules/angular-aria/angular-aria.js"></script>
-    <script src="../node_modules/angular-animate/angular-animate.js"></script>
-    <script src="../node_modules/angular-material/angular-material.js"></script>
-    <script src="../node_modules/angular-material-icons/angular-material-icons.js"></script>
+    <link href="../assets/design/core.css" rel="stylesheet">
+    <link href="../assets/design/desktop.css" rel="stylesheet">
+    <link href="../assets/design/window.css" rel="stylesheet">
+    <link href="../assets/design/toolbar.css" rel="stylesheet">
+    <link href="../assets/design/notifications.css" rel="stylesheet">
 
     <style>
 
         body {
             display: none;
-            background: url(../users/kurisu/wallpaper.png) no-repeat center center fixed;
+            background: url(../assets/wallpaper.png) no-repeat center center fixed;
         }
 
     </style>
 
     <script>
         const $ = require("jquery");
-        const remote = require("electron").remote;
         const moment = require("moment");
+        const { remote } = require("electron");
 
         // Core
-        const WindowManager = require("../core/WindowManager");
-        const Notification = require("../core/Notification");
-        const Taskbar = require("../core/Taskbar");
+        const { WindowManager, Notification, Taskbar } = require("../core/System");
 
         // Apps
-        const BrowserApp = require("../apps/Browser/main");
-        const TerminalApp = require("../apps/Terminal/main");
-
-        angular.module("desktop", ["ngMaterial", "ngMdIcons"])
-            .controller("desktop", ($scope) => { });
+        const BrowserApp = require("../apps/Browser/");
+        const TerminalApp = require("../apps/Terminal/");
 
         $(() => {
             setTimeout(() => $("body").fadeIn(250), 200);
-            setInterval(() => $("#clock").text(moment().format("h:mm A")), 150);
 
             const taskbar = new Taskbar(".toolbar");
             const browser = new BrowserApp();
@@ -61,7 +46,7 @@
                 new Notification({
                     title: "System",
                     message: "Initialised",
-                    image: "../system/images/system.png"
+                    image: "../assets/images/system.png"
                 });
             }, 700);
         });

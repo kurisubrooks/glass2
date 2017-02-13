@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const guid = require("../util/guid");
+const guid = require("./Util/guid");
 const WindowManager = require("./WindowManager");
 
 class App {

@@ -1,5 +1,5 @@
 const $ = require("jquery");
-const guid = require("../util/guid");
+const guid = require("./Util/guid");
 const fadeRemove = (el, sp) => el.fadeOut(sp || "fast", () => el.remove());
 let notifications = {};
 
@@ -47,10 +47,10 @@ module.exports = class Notification {
 
         notifications[this.id] = setTimeout(() => fadeRemove(this.notif), this.duration);
 
-        this.notif.hover(event => {
+        /* this.notif.hover(event => {
             if (event.type === "mouseenter") this.clear();
             if (event.type === "mouseleave") this.destroy();
-        });
+        }); */
 
         this.notif.click(event => {
             event.stopImmediatePropagation();

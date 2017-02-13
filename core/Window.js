@@ -2,7 +2,7 @@ const $ = require("jquery");
 const color = require("tinycolor2");
 
 const Template = require("./Template");
-const guid = require("../util/guid");
+const guid = require("./Util/guid");
 
 class Window {
     constructor(options) {
