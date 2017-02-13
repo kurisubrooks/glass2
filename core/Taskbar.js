@@ -6,15 +6,20 @@ const Template = require("./Template");
 
 class Taskbar {
     constructor(container) {
-        this.clock = moment().format("h:mm A");
         this.container = $(container);
         this.apps = new Map();
-
         this.toolbar = new Template("toolbar").build();
 
         this.container.append(this.toolbar);
-
         this.appArea = this.container.find(".apps");
+        this.clock = this.container.find("#clock");
+
+        setInterval(() => this.updateClock(), 150);
+    }
+
+    updateClock() {
+        let time = moment().format("h:mm A");
+        if (this.clock.text() !== time) this.clock.text(time);
     }
 
     addPin(app) {
