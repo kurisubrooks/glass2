@@ -4,6 +4,8 @@ const moment = require("moment");
 const App = require("./App");
 const Template = require("./Template");
 
+const ContextMenu = require('./ContextMenu')
+
 class Taskbar {
     constructor(container) {
         this.container = $(container);
@@ -31,14 +33,24 @@ class Taskbar {
             icon: app.icon
         });
 
+        const appContextMenu = new ContextMenu({
+          location: appItem,
+          controls: [
+            {
+              type: 'item',
+              text: 'Unpin from taskbar',
+              click: (e) => { this.removePin(app); }
+            }
+          ]
+        })
+
         appItem.on("click", app.onClick.bind(app));
         this.appArea.append(appItem);
     }
 
     removePin(app) {
         this.apps.delete(app.id);
-
-        const appItem = this.appArea.find(`#${app.id}`);
+        const appItem = this.appArea.find(`#app_${app.name}_${app.id}`);
         appItem.remove();
     }
 

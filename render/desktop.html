@@ -10,6 +10,7 @@
     <link href="../assets/design/window.css" rel="stylesheet">
     <link href="../assets/design/toolbar.css" rel="stylesheet">
     <link href="../assets/design/notifications.css" rel="stylesheet">
+    <link href="../assets/design/context-menu.css" rel="stylesheet">
 
     <style>
 
@@ -26,7 +27,7 @@
         const { remote } = require("electron");
 
         // Core
-        const { WindowManager, Notification, Taskbar } = require("../core/System");
+        const { WindowManager, Notification, Taskbar, ContextMenu } = require("../core/System");
 
         // Apps
         const BrowserApp = require("../apps/Browser/");
@@ -60,6 +61,5 @@
     <div class="notifications pos-bottom-right" id="breadbox"></div>
 
     <div class="toolbar"></div>
-
 </body>
 </html>
