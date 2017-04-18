@@ -1,38 +1,45 @@
 .context-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: block;
-  z-index: 100006;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100006;
 }
+
 .context-menu:not([open]) {
-  display: none;
+    display: none;
 }
+
 .context-menu__list {
-  width: 256px;
-  background-color: white;
-  list-style: none;
-  padding: 8px 32px 8px 32px;
-  margin: 0;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.38);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 256px;
+    border-radius: 1px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
 }
+
 .context-menu__item {
-  padding: 8px;
-  border-radius: 4px;
+    padding: 8px 20px;
+    cursor: pointer;
 }
+
 .context-menu__item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
+
 .context-menu__list .context-menu__list {
-  display: none;
+    display: none;
 }
+
 .context-menu__list .context-menu__item-list:hover .context-menu__list {
-  display: block;
+    display: block;
 }
+
 .context-menu__separator {
-  height: 1px;
-  width: 100%;
-  margin: 8px 0 8px 0;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.38);
+    height: 1px;
+    width: 100%;
+    margin: 8px 0 8px 0;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.38);
 }
