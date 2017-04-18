@@ -3,8 +3,7 @@ const moment = require("moment");
 
 const App = require("./App");
 const Template = require("./Template");
-
-const ContextMenu = require('./ContextMenu')
+const ContextMenu = require("./ContextMenu");
 
 class Taskbar {
     constructor(container) {
@@ -33,16 +32,16 @@ class Taskbar {
             icon: app.icon
         });
 
-        const appContextMenu = new ContextMenu({
-          location: appItem,
-          controls: [
-            {
-              type: 'item',
-              text: 'Unpin from taskbar',
-              click: (e) => { this.removePin(app); }
-            }
-          ]
-        })
+        const appContextMenu = new ContextMenu({ // eslint-disable-line no-unused-vars
+            location: appItem,
+            controls: [
+                {
+                    type: "item",
+                    text: "Unpin",
+                    click: () => this.removePin(app)
+                }
+            ]
+        });
 
         appItem.on("click", app.onClick.bind(app));
         this.appArea.append(appItem);
