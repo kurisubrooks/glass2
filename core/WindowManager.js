@@ -1,9 +1,7 @@
-const Window = require("./Window");
 const windows = {};
 
 class WindowManager {
-    static createWindow(options) {
-        const window = new Window(options);
+    static addWindow(window) {
         windows[window.id] = window;
         return window;
     }

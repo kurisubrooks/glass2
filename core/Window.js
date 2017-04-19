@@ -1,5 +1,4 @@
 const $ = require("jquery");
-const color = require("tinycolor2");
 
 const Template = require("./Template");
 const guid = require("./Util/guid");
@@ -43,20 +42,6 @@ class Window {
 
     openIn(windowArea) {
         $(windowArea).append(this.window);
-
-        const webview = this.window.find("webview");
-        const header = this.window.find("header");
-
-        webview.on("did-change-theme-color", event => {
-            const theme = event.originalEvent.themeColor;
-
-            header.css("background-color", theme);
-            if (color(theme).isDark()) header.addClass("dark");
-        });
-
-        webview.on("page-title-updated", event => {
-            header.find("h1").text(event.originalEvent.title);
-        });
 
         return this;
     }

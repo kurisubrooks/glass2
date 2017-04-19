@@ -1,1 +1,51 @@
-<webview style="height:100%" src="http://google.com"></webview>
+<style>
+.browser-controls {
+  background-color: #fafafa;
+  height: 48px;
+}
+.browser-controls > * {
+  height: 36px;
+  margin: 6px 3px;
+}
+.browser-button {
+  width: 36px;
+}
+.browser-url {
+  width: calc(100% - 3 * (50px));
+  padding: 4px;
+}
+.browser-tabs {
+  height: 36px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: 1;
+  background-color: #fff;
+  margin: 0;
+}
+.browser-tabs > .browser-tab + .browser-tab {
+  margin-left: 12px;
+}
+.browser-tab {
+  max-width: 200px;
+  flex: 1;
+  background-color: #ddd;
+  line-height: 36px;
+  text-align: center;
+}
+.browser-tab.active {
+  background-color: #f0f0f0;
+}
+</style>
+<ul class="browser-tabs">
+  <li class="browser-tab">Google</li>
+</ul>
+<div class="browser-controls">
+  <button class="browser-button browser-back">&lt;</button>
+  <button class="browser-button browser-forward">&gt;</button>
+  <button class="browser-button browser-refresh">r</button>
+  <input class="browser-url" placeholder="Enter URL here"></input>
+</div>
+<div class="browser-area" style="height: calc(100% - 48px - 36px); position: relative;">
+    <webview  src="http://google.com" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></webview>
+</div>

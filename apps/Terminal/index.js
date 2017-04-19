@@ -1,4 +1,5 @@
 const App = require("../../core/App");
+const Window = require("../../core/Window");
 
 class TerminalApp extends App {
     constructor() {
@@ -14,4 +15,7 @@ class TerminalApp extends App {
     }
 }
 
-module.exports = TerminalApp;
+module.exports = {
+    TerminalApp: TerminalApp,
+    TerminalWindow: Window
+};
