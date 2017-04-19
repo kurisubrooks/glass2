@@ -1,6 +1,6 @@
 <style>
 .browser-controls {
-  background-color: #fafafa;
+  background-color: #f2f2f2;
   height: 48px;
 }
 .browser-controls > * {
@@ -29,16 +29,57 @@
 .browser-tab {
   max-width: 200px;
   flex: 1;
-  background-color: #ddd;
+  background-color: #dadada;
   line-height: 36px;
   text-align: center;
+  position: relative;
+}
+.browser-tab > span {
+    position: absolute;
+    left: 6px;
+    right: 30px;
+    text-overflow: ellipsis;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.browser-tab .tab-close-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 6px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 20px;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+.browser-tab .tab-close-button:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
 }
 .browser-tab.active {
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
+}
+.new-tab-button {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 3px;
+}
+.new-tab-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 </style>
 <ul class="browser-tabs">
-  <li class="browser-tab">Google</li>
+    <li class="new-tab-button">+</li>
 </ul>
 <div class="browser-controls">
   <button class="browser-button browser-back">&lt;</button>
@@ -46,6 +87,6 @@
   <button class="browser-button browser-refresh">r</button>
   <input class="browser-url" placeholder="Enter URL here"></input>
 </div>
-<div class="browser-area" style="height: calc(100% - 48px - 36px); position: relative;">
-    <webview  src="http://google.com" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></webview>
+<div class="browser-tab-area" style="height: calc(100% - 48px - 36px); position: relative;">
+
 </div>
