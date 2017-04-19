@@ -29,7 +29,11 @@ class Window {
         });
 
         // Initialize events for dragging window around
-        this.window.find(".window-title").mousedown((evt) => { this.startDrag(evt.pageX, evt.pageY); });
+        this.window.find(".window-title").mousedown((evt) => {
+            if (evt.target === this.window.find(".window-title h1")[0]) {
+                this.startDrag(evt.pageX, evt.pageY);
+            }
+        });
 
         // Initialize events for resizing window
         this.window.find(".window-resize").mousedown((evt) => { this.startResize(evt.pageX, evt.pageY); });
