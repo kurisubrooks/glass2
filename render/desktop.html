@@ -30,8 +30,8 @@
         const { WindowManager, Notification, Taskbar, ContextMenu } = require("../core/System");
 
         // Apps
-        const { BrowserApp, BrowserWindow } = require("../apps/Browser/");
-        const { TerminalApp, TerminalWindow } = require("../apps/Terminal/");
+        const { BrowserApp } = require("../apps/Browser/");
+        const { TerminalApp } = require("../apps/Terminal/");
 
         $(() => {
             setTimeout(() => $("body").fadeIn(250), 200);
@@ -58,14 +58,14 @@
 
     <div class="desktop"></div>
     <div class="notifications pos-bottom-right" id="breadbox"></div>
-    <div class="toolbar"></div>
+    <div class="toolbar transparent"></div>
 
     <script>
-    document.addEventListener('keyup', (e) => {
-      if (e.keyCode == 116) {
-        location.reload();
-      }
-    });
+        document.addEventListener("keyup", (e) => {
+            if (e.keyCode === 116) {
+                location.reload();
+            }
+        });
     </script>
 
 </body>
