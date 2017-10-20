@@ -1,14 +1,27 @@
 <style>
+    button {
+        -webkit-user-select: none !important;
+        user-select: none !important;
+    }
+
     .browser-tabs {
         display: flex;
-        list-style: none;
-        background: #F5F5F5;
+        background: #EEEEEE;
+        border-bottom: 1px solid #E5E5E5;
         height: 38px;
         margin: 0;
         padding: 0;
     }
 
-    .browser-tabs .browser-tab {
+    .browser-tabs .tabs {
+        display: flex;
+        list-style: none;
+        height: 38px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .browser-tabs .tabs .browser-tab {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -16,20 +29,53 @@
         max-width: 200px;
         flex: 1;
         margin: 0;
-        padding: 0 8px;
+        padding: 0 15px;
+        border-right: 1px solid #E5E5E5;
     }
 
-    .browser-tabs .browser-tab.active {
-        background: #FFFFFF;
+    .browser-tabs .tabs .browser-tab.active {
+        background: #F5F5F5;
+    }
+
+    .browser-tabs .tabs .browser-tab .text {
+        width: 200px;
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+    }
+
+    .browser-tabs .tabs .browser-tab .button-close {
+        border: none;
+        background: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+        background-image: url(../assets/icons/close.svg);
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: 3px 3px;
+        /*background: url(../assets/icons/close.svg) center center no-repeat;*/
+    }
+
+    .browser-tabs .tabs .browser-tab .button-close:hover {
+        background-color: #F5F5F5; 
     }
 
     .browser-tabs .browser-new-tab {
         height: 38px;
         width: 42px;
+
+        -webkit-user-select: none !important;
+        user-select: none !important;
     }
 
     .browser-tabs .browser-new-tab.button-new {
         border: none;
+        border-right: 1px solid #E5E5E5;
         background-image: url(../assets/icons/plus.svg);
         background-size: 24px;
         background-repeat: no-repeat;
@@ -37,16 +83,11 @@
         cursor: pointer;
     }
 
-    .browser-tabs .browser-tab .button-close {
-        border: none;
-        background: url(../assets/icons/close.svg) center center no-repeat;
-    }
-
     .browser-controls {
         display: flex;
         height: 38px;
         background: #F5F5F5;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #E5E5E5;
     }
 
     .browser-controls .controls button {
@@ -89,9 +130,13 @@
         border: none;
         font-size: 14px;
         padding: 6px 14px;
-        border: 1px solid #DDD;
+        border: 1px solid #E5E5E5;
         border-radius: 4px;
         margin: 0 8px;
+    }
+
+    .browser-controls .url-bar .browser-url:focus {
+        border-color: #CCC;
     }
 
     .browser-view {
@@ -100,9 +145,10 @@
     }
 </style>
 
-<ul class="browser-tabs">
-    <li class="browser-new-tab button-new">&nbsp;</li>
-</ul>
+<div class="browser-tabs">
+    <ul class="tabs"></ul>
+    <div class="browser-new-tab button-new">&nbsp;</div>
+</div>
 
 <div class="browser-controls">
     <div class="controls">

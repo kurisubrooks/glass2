@@ -40,7 +40,7 @@ class BrowserWindow extends Window {
         this.tabs = new Map();
         this.header = this.window.find("header");
         this.tabArea = this.window.find(".browser-view");
-        this.tabsBar = this.window.find(".browser-tabs");
+        this.tabsBar = this.window.find(".tabs");
 
         const backButton = this.backButton = this.window.find(".button-back");
         const forwardButton = this.forwardButton = this.window.find(".button-forward");
