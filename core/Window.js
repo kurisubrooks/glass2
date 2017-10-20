@@ -17,8 +17,11 @@ class Window {
         this.size = options.size;
         this.content = options.content;
         this.theme = options.theme || "light";
+        this.frame = "frame" in options ? options.frame : true;
         this.id = guid();
         this.maximized = false;
+
+        console.log(this.title, options.frame);
 
         this.window = new Template("window").build({
             title: this.title,
@@ -42,6 +45,7 @@ class Window {
         $(document).mouseup(() => { this.stopMovements(); });
 
         if (this.theme === "dark") this.window.addClass("dark");
+        if (!this.frame) this.window.addClass("no-frame");
     }
 
     openIn(windowArea) {
@@ -102,19 +106,23 @@ class Window {
         this.mx = mouseX;
         this.my = mouseY;
     }
+
     doMousemovement(mouseX, mouseY) {
         let dx = mouseX - this.mx, dy = mouseY - this.my;
         this.mx = mouseX;
         this.my = mouseY;
+
         if (this.dragging) {
             this.posX += dx;
             this.posY += dy;
         }
+
         if (this.resizing) {
             this.width += dx;
             this.height += dy;
         }
     }
+
     stopMovements() {
         this.resizing = this.dragging = false;
     }
@@ -122,12 +130,15 @@ class Window {
     get posX() {
         return parseInt(this.window.css("left"));
     }
+
     set posX(val) {
         this.window.css("left", Math.max(val, 0));
     }
+
     get posY() {
         return parseInt(this.window.css("top"));
     }
+
     set posY(val) {
         this.window.css("top", Math.max(val, 0));
     }
@@ -135,12 +146,15 @@ class Window {
     get width() {
         return parseInt(this.window.css("width"));
     }
+
     set width(val) {
         this.window.css("width", Math.max(val, 0));
     }
+
     get height() {
         return parseInt(this.window.css("height"));
     }
+
     set height(val) {
         this.window.css("height", Math.max(val, 0));
     }

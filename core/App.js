@@ -10,12 +10,12 @@ class App {
         if (!name) throw new Error("Missing App Name");
 
         this.name = name;
+        this.id = guid();
         this.icon = path.join(__dirname, "..", "apps", name, "icon.png");
         this.content = fs.readFileSync(path.join(__dirname, "..", "apps", name, "index.html"), "utf8");
-        this.id = guid();
         this.WindowType = WindowType || Window;
 
-        console.log(this.name);
+        // console.log(this.name, this.frame);
     }
 
     get theme() {
@@ -26,10 +26,15 @@ class App {
         return [1280, 720];
     }
 
+    get frame() {
+        return true;
+    }
+
     onClick() {
         WindowManager.addWindow(new this.WindowType({
             title: this.name,
             size: this.size,
+            frame: this.frame,
             theme: this.theme,
             content: this.content
         })).openIn(".desktop");
