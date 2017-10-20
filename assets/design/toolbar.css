@@ -12,6 +12,10 @@
     height: 54px;
 }
 
+.toolbar.transparent {
+    background: rgba(25, 25, 25, 0.95);
+}
+
 .toolbar ul,
 .toolbar ol {
     display: block;
@@ -31,6 +35,14 @@
 .toolbar .apps {
     align-self: flex-start;
     flex: 1;
+}
+
+.toolbar .apps #app_launcher {
+    width: 50px;
+    background-image: url(../icons/apps.svg);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: 12px 16px;
 }
 
 .toolbar .apps li {
