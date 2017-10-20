@@ -12,11 +12,13 @@ class BrowserTab {
         this.loadURLImmediately = typeof options.url !== "undefined";
         this.url = options.url || "";
         this.id = guid();
+
         const webview = this.webview = $(template.replace("{{ id }}", `browser-tab-${this.id}`).replace("{{ src }}", this.loadURLImmediately ? `src="${this.url}"` : ""));
-        window.tabArea.append(webview);
         const tab = this.tab = $(barTemplate.replace("{{ id }}", `browser-bar-tab-${this.id}`).replace("{{ title }}", "New Tab"));
-        window.tabsBar.append(tab);
         const closeButton = this.closeButton = tab.find(".tab-close-button");
+
+        window.tabArea.append(webview);
+        window.tabsBar.append(tab);
 
         webview.on("did-change-theme-color", event => {
             const theme = event.originalEvent.themeColor;
@@ -24,11 +26,13 @@ class BrowserTab {
             window.css("background-color", theme);
             if (color(theme).isDark()) window.addClass("dark");
         });
+
         webview.on("page-title-updated", event => {
             this.tab.find(".text").text(event.originalEvent.title);
             window.checkButtons();
             window.urlBar.val(webview[0].src);
         });
+
         webview.on("did-finish-load", () => {
             window.checkButtons();
             window.urlBar.val(webview[0].src);
@@ -37,29 +41,37 @@ class BrowserTab {
         tab.click(() => {
             window.focusTab(this.id);
         });
+
         closeButton.click((event) => {
             window.closeTab(this.id);
             event.stopPropagation();
         });
     }
+
     goBack() {
         const webview = this.webview[0];
+
         if (webview.canGoBack()) {
             webview.goBack();
         }
     }
+
     goForward() {
         const webview = this.webview[0];
+
         if (webview.canGoForward()) {
             webview.goForward();
         }
     }
+
     reload() {
         const webview = this.webview[0];
         webview.reload();
     }
+
     loadURL(url) {
         const webview = this.webview[0];
+
         // Process url (add http)
         let processedUrl;
         if (/https?:\/\//.test(url)) {
@@ -68,13 +80,15 @@ class BrowserTab {
         } else {
             // URL that needs to have http:// before it (maybe), check if it has a valid TLD, then go ahead and prepend it
             let isProbablyUrl = false;
-            let i;
-            for (i = 0; i < this.tlds.length; i++) {
+
+            for (let i = 0; i < this.tlds.length; i++) {
                 isProbablyUrl = new RegExp(`.+\\.${this.tlds[i]}$`, "i").test(url);
                 if (isProbablyUrl) break;
             }
+
             if (isProbablyUrl) processedUrl = `http://${url}`;
         }
+
         if (!processedUrl) {
             // Assume its a query string, http://google.com/#q=${query}
             url = url.replace(/(\+)|(#)|(%)|(&)|(<)|(>)|( )/g, (match, plus, tag, percent, ampersand, lt, gt, space) => {
@@ -87,8 +101,10 @@ class BrowserTab {
                 if (space) return "+";
                 return match;
             });
+
             processedUrl = `https://www.google.com/#q=${url}`;
         }
+
         this.window.urlBar.val(processedUrl);
         webview.loadURL(processedUrl);
     }

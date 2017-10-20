@@ -37,15 +37,16 @@ class BrowserWindow extends Window {
     openIn(windowArea) {
         super.openIn(windowArea);
 
+        this.tabs = new Map();
         this.header = this.window.find("header");
+        this.tabArea = this.window.find(".browser-view");
+        this.tabsBar = this.window.find(".browser-tabs");
+
         const backButton = this.backButton = this.window.find(".button-back");
         const forwardButton = this.forwardButton = this.window.find(".button-forward");
         const refreshButton = this.refreshButton = this.window.find(".button-reload");
-        this.tabArea = this.window.find(".browser-view");
-        this.tabsBar = this.window.find(".browser-tabs");
         const urlBar = this.urlBar = this.window.find(".browser-url");
         const newTabButton = this.newTabButton = this.window.find(".browser-new-tab");
-        this.tabs = new Map();
 
         backButton.click(() => {
             this.openTab.goBack();
@@ -106,7 +107,7 @@ class BrowserWindow extends Window {
     focusTab(tabID, justOpened) {
         this.currentTab = tabID;
 
-        for (let [key, value] of this.tabs) { // eslint-disable-line no-unused-vars
+        for (let [, value] of this.tabs) {
             value.webview.css("display", "none");
             value.tab.removeClass("active");
         }
