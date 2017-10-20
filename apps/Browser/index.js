@@ -10,12 +10,22 @@ const tldsRaw = fs.readFileSync(tldsFilepath, "utf8");
 const tlds = tldsRaw.split("\n");
 
 // Move this to some settings file somewhere
-const defaultPage = "https://google.com"; // eslint-disable-line no-unused-vars
+const defaultPage = "https://www.google.com/"; // eslint-disable-line no-unused-vars
 
 class BrowserApp extends App {
     constructor() {
         super("Browser", BrowserWindow);
     }
+
+    /*
+    get theme() {
+        return "dark";
+    }
+
+    get frame() {
+        return false;
+    }
+    */
 }
 
 class BrowserWindow extends Window {
@@ -23,39 +33,45 @@ class BrowserWindow extends Window {
         super(options);
         this.tlds = tlds;
     }
+
     openIn(windowArea) {
         super.openIn(windowArea);
 
         this.header = this.window.find("header");
-        const backButton = this.backButton = this.window.find(".browser-back");
-        const forwardButton = this.forwardButton = this.window.find(".browser-forward");
-        const refreshButton = this.refreshButton = this.window.find(".browser-refresh");
-        this.tabArea = this.window.find(".browser-tab-area");
+        const backButton = this.backButton = this.window.find(".button-back");
+        const forwardButton = this.forwardButton = this.window.find(".button-forward");
+        const refreshButton = this.refreshButton = this.window.find(".button-reload");
+        this.tabArea = this.window.find(".browser-view");
         this.tabsBar = this.window.find(".browser-tabs");
         const urlBar = this.urlBar = this.window.find(".browser-url");
-        const newTabButton = this.newTabButton = this.window.find(".new-tab-button");
+        const newTabButton = this.newTabButton = this.window.find(".browser-new-tab");
         this.tabs = new Map();
 
         backButton.click(() => {
             this.openTab.goBack();
         });
+
         forwardButton.click(() => {
             this.openTab.goForward();
         });
+
         refreshButton.click(() => {
             this.openTab.reload();
         });
+
         urlBar.on("keypress", event => {
             if (event.key === "Enter") {
                 this.openTab.loadURL(urlBar.val());
             }
         });
+
         urlBar.on("focus", () => {
             urlBar.one("mouseup", () => {
                 urlBar.select();
                 return false;
             }).select();
         });
+
         newTabButton.click(() => {
             this.focusTab(this.newTab(), true);
         });
@@ -64,36 +80,45 @@ class BrowserWindow extends Window {
 
         return this;
     }
+
     checkButtons() {
         const webview = this.window.find("webview")[0];
+
         if (!webview.canGoBack()) {
             this.backButton.attr("disabled", true);
         } else {
             this.backButton.removeAttr("disabled");
         }
+
         if (!webview.canGoForward()) {
             this.forwardButton.attr("disabled", true);
         } else {
             this.forwardButton.removeAttr("disabled");
         }
     }
+
     newTab() {
         const tab = new BrowserTab(this, { url: defaultPage });
         this.tabs.set(tab.id, tab);
         return tab.id;
     }
+
     focusTab(tabID, justOpened) {
         this.currentTab = tabID;
+
         for (let [key, value] of this.tabs) { // eslint-disable-line no-unused-vars
             value.webview.css("display", "none");
             value.tab.removeClass("active");
         }
+
         this.openTabWebview.css("display", "flex");
         this.openTab.tab.addClass("active");
+
         if (!justOpened) {
             this.tabSwitch();
         }
     }
+
     closeTab(tabID) {
         this.tabs.get(tabID).webview.remove();
         this.tabs.get(tabID).tab.remove();
@@ -107,6 +132,7 @@ class BrowserWindow extends Window {
     get openTab() {
         return this.tabs.get(this.currentTab);
     }
+
     get openTabWebview() {
         return this.openTab.webview;
     }

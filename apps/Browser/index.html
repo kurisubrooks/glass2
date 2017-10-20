@@ -1,97 +1,123 @@
 <style>
-.browser-controls {
-  background-color: #f2f2f2;
-  height: 48px;
-}
-.browser-controls > * {
-  height: 36px;
-  margin: 6px 3px;
-}
-.browser-button {
-  width: 36px;
-}
-.browser-url {
-  width: calc(100% - 3 * (50px));
-  padding: 4px;
-}
-.browser-tabs {
-  height: 36px;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: 1;
-  background-color: #fff;
-  margin: 0;
-}
-.browser-tabs > .browser-tab + .browser-tab {
-  margin-left: 12px;
-}
-.browser-tab {
-  max-width: 200px;
-  flex: 1;
-  background-color: #dadada;
-  line-height: 36px;
-  text-align: center;
-  position: relative;
-}
-.browser-tab > span {
-    position: absolute;
-    left: 6px;
-    right: 30px;
-    text-overflow: ellipsis;
-    top: 0;
-    bottom: 0;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.browser-controls > * {
-    background: #fff;
-    border: none;
-    box-shadow: 0 0 2px -1px #000;
-}
-.browser-tab .tab-close-button {
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    border-radius: 50%;
-    margin: 6px;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    font-size: 20px;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
-.browser-tab .tab-close-button:hover {
-    background-color: rgba(255, 0, 0, 0.7);
-    color: white;
-}
-.browser-tab.active {
-  background-color: #f2f2f2;
-}
-.new-tab-button {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    margin: 3px;
-}
-.new-tab-button:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-</style>
-<ul class="browser-tabs">
-    <li class="new-tab-button">+</li>
-</ul>
-<div class="browser-controls">
-  <button class="browser-button browser-back">&lt;</button>
-  <button class="browser-button browser-forward">&gt;</button>
-  <button class="browser-button browser-refresh">r</button>
-  <input class="browser-url" placeholder="Enter URL here"></input>
-</div>
-<div class="browser-tab-area" style="height: calc(100% - 48px - 36px); position: relative;">
+    .browser-tabs {
+        display: flex;
+        list-style: none;
+        background: #F5F5F5;
+        height: 38px;
+        margin: 0;
+        padding: 0;
+    }
 
+    .browser-tabs .browser-tab {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        max-width: 200px;
+        flex: 1;
+        margin: 0;
+        padding: 0 8px;
+    }
+
+    .browser-tabs .browser-tab.active {
+        background: #FFFFFF;
+    }
+
+    .browser-tabs .browser-new-tab {
+        height: 38px;
+        width: 42px;
+    }
+
+    .browser-tabs .browser-new-tab.button-new {
+        border: none;
+        background-image: url(../assets/icons/plus.svg);
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: 9px 7px;
+        cursor: pointer;
+    }
+
+    .browser-tabs .browser-tab .button-close {
+        border: none;
+        background: url(../assets/icons/close.svg) center center no-repeat;
+    }
+
+    .browser-controls {
+        display: flex;
+        height: 38px;
+        background: #F5F5F5;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .browser-controls .controls button {
+        background: none;
+        float: left;
+        border: none;
+        height: 38px;
+        width: 38px;
+        cursor: pointer;
+
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: 8px 7px;
+    }
+
+    .browser-controls .controls .button-back {
+        background-image: url(../assets/icons/back.svg);
+    }
+
+    .browser-controls .controls .button-forward {
+        background-image: url(../assets/icons/forward.svg);
+    }
+
+    .browser-controls .controls .button-reload {
+        background-image: url(../assets/icons/refresh.svg);
+    }
+
+    .browser-controls .controls .button-options {
+        background-image: url(../assets/icons/more.svg);
+    }
+
+    .browser-controls .url-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    .browser-controls .url-bar .browser-url {
+        width: 100%;
+        border: none;
+        font-size: 14px;
+        padding: 6px 14px;
+        border: 1px solid #DDD;
+        border-radius: 4px;
+        margin: 0 8px;
+    }
+
+    .browser-view {
+        height: calc(100% - 38px - 38px + 1px);
+        position: relative;
+    }
+</style>
+
+<ul class="browser-tabs">
+    <li class="browser-new-tab button-new">&nbsp;</li>
+</ul>
+
+<div class="browser-controls">
+    <div class="controls">
+        <button class="button-back">&nbsp;</button>
+        <button class="button-forward">&nbsp;</button>
+        <button class="button-reload">&nbsp;</button>
+    </div>
+
+    <div class="url-bar">
+        <input class="browser-url">
+    </div>
+
+    <div class="controls">
+        <button class="button-options">&nbsp;</button>
+    </div>
 </div>
+
+<div class="browser-view"></div>
