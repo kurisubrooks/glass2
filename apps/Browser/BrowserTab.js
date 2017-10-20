@@ -1,10 +1,10 @@
 const guid = require("../../core/Util/guid");
 const fs = require("fs");
 const $ = require("jquery");
-const color = require("tinycolor2");
+// const color = require("tinycolor2");
 
-const template = fs.readFileSync(`${__dirname}/tab-template.html`, "utf8");
-const barTemplate = fs.readFileSync(`${__dirname}/bar-tab-template.html`, "utf8");
+const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
+const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
 
 class BrowserTab {
     constructor(window, options) {
@@ -15,17 +15,19 @@ class BrowserTab {
 
         const webview = this.webview = $(template.replace("{{ id }}", `browser-tab-${this.id}`).replace("{{ src }}", this.loadURLImmediately ? `src="${this.url}"` : ""));
         const tab = this.tab = $(barTemplate.replace("{{ id }}", `browser-bar-tab-${this.id}`).replace("{{ title }}", "New Tab"));
-        const closeButton = this.closeButton = tab.find(".tab-close-button");
+        const closeButton = this.closeButton = tab.find(".button-close");
 
         window.tabArea.append(webview);
         window.tabsBar.append(tab);
 
+        /*
         webview.on("did-change-theme-color", event => {
             const theme = event.originalEvent.themeColor;
 
             window.css("background-color", theme);
             if (color(theme).isDark()) window.addClass("dark");
         });
+        */
 
         webview.on("page-title-updated", event => {
             this.tab.find(".text").text(event.originalEvent.title);
