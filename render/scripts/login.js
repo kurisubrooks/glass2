@@ -1,3 +1,4 @@
+const { remote } = require("electron");
 const moment = require("moment");
 const $ = window.jQuery = require("jquery");
 
@@ -67,6 +68,8 @@ $(() => {
     $(".head").not(".ghost").click(el => selectUser(el.target));
 
     $("body").fadeIn(500);
+
+    setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
 
     /*
     $("login").submit((e) => {
