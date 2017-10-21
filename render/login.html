@@ -10,14 +10,55 @@
 
     <script>
         const remote = require("electron").remote;
+        const moment = require("moment");
         window.$ = window.jQuery = require("jquery");
 
-        //remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`)
-
         $(() => {
+            const users = [
+                {
+                    name: "Kurisu Brooks",
+                    avatar: "kurisu",
+                    password: "cheese"
+                },
+                {
+                    name: "Katie Sekai",
+                    avatar: "katie",
+                    password: "tomato"
+                },
+                {
+                    name: "Sammy Sekai",
+                    avatar: "sammy",
+                    password: "pumpkin"
+                }
+            ];
+
+            const padding = users.length - 1;
+            let selectedUser = null;
+
+            for (let index = 0; index < users.length; index++) {
+                const head = $(`<div class="head" style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
+
+                if (index === 0) {
+                    head.addClass("active");
+                    $(".login .form .title").text(users[index].name);
+                    selectedUser = users[index];
+                }
+
+                $(".heads").append(head);
+            }
+
+            for (let ghosts = 0; ghosts < users.length - 1; ghosts++) {
+                $(".heads").prepend($(`<div class="head ghost"></div>`))
+            }
+
             $("body").fadeIn(500);
 
-            $("login").submit((e) => {
+            setInterval(() => {
+                let time = moment().format("H:mm");
+                if ($(".time").text() !== time) $(".time").text(time);
+            }, 150);
+
+            /*$("login").submit((e) => {
                 let success = true;
                 let user = e.target[0].value.replace("user:", "");
                 let pass = e.target[1].value;
@@ -27,7 +68,7 @@
                     setTimeout(() => $("main").fadeOut(250), 1500);
                     setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
                 }
-            });
+            });*/
         });
     </script>
 
@@ -36,27 +77,16 @@
 
     <div class="container">
         <div class="top">
-            <div class="time">
-                3:24
-            </div>
+            <div class="time"></div>
             <div class="buttons">
                 <!--<button class="power"></button>-->
             </div>
         </div>
 
         <div class="login">
-            <div class="heads">
-                <div class="head ghost"></div>
-                <div class="head ghost"></div>
-                <div class="head" style="background-image: url(../assets/avatars/kurisu.png);"></div>
-                <div class="head active" style="background-image: url(../assets/avatars/sammy.png);"></div>
-                <div class="head" style="background-image: url(../assets/avatars/katie.png);"></div>
-                <div class="head ghost"></div>
-                <div class="head ghost"></div>
-            </div>
-
+            <div class="heads"></div>
             <div class="form">
-                <div class="title">Sammy Sekai</div>
+                <div class="title"></div>
                 <div class="password">
                     <input id="password" type="password" placeholder="Password" required>
                 </div>

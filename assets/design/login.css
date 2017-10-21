@@ -42,6 +42,10 @@ body {
     flex-direction: row;
 }
 
+.container .login .heads .head:not(.ghost) {
+    cursor: pointer;
+}
+
 .container .login .heads .head.active {
     height: 140px;
     width: 140px;
