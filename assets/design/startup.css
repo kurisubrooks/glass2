@@ -1,12 +1,31 @@
-html, body {
-    background: #000000;
+html,
+body {
+    height: 100%;
+    background: #1F1F1F;
+    color: #FFFFFF;
+}
+
+body {
+    display: none;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
-    animation: startup .2s;
+    height: 200px;
+    width: 200px;
 }
 
-@keyframes startup {
-    0%    { opacity: 0; }
-    100%  { opacity: 1; }
+#error {
+    position: absolute;
+    transform: translateX(-50%);
+    text-align: center;
+    left: 50%;
+    bottom: 15%;
 }

@@ -12,42 +12,25 @@
         const $ = require("jquery");
         const { remote } = require("electron");
 
-        process.on("uncaughtException", err => {
-            $("err").text("Error, check console for details");
+        $(() => {
+            $("body").fadeIn(500);
+
+            // doStartup();
+
+            setTimeout(() => {
+                $("body").fadeOut(500);
+                setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/login.html`), 500);
+            }, 5000);
         });
-
-        let timer = setTimeout(() => {
-            $("img").fadeOut(200);
-            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/login.html`), 100);
-        }, 5000);
-
-        ok
     </script>
-
-    <style>
-        html, body {
-            background: #000000;
-        }
-
-        img {
-            animation: startup .2s;
-        }
-
-        @keyframes startup {
-            0%    { opacity: 0; }
-            100%  { opacity: 1; }
-        }
-    </style>
 
 </head>
 <body>
 
-    <main>
-        <center>
-            <img src="../assets/images/glass.png" width="50%">
-            <div id="err"></div>
-        </center>
-    </main>
+    <div class="container">
+        <img src="../assets/images/glass.png">
+        <div id="error"></div>
+    </div>
 
 </body>
 </html>
