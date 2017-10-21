@@ -57,7 +57,7 @@
         background-image: url(../assets/icons/close.svg);
         background-size: 18px;
         background-repeat: no-repeat;
-        background-position: 3px 3px;
+        background-position: center center;
     }
 
     .browser-tabs .tabs .browser-tab .button-close:hover {
@@ -142,6 +142,58 @@
         height: calc(100% - 38px - 38px + 1px);
         position: relative;
     }
+
+    .window-content::-webkit-scrollbar {
+        display:none;
+    }
+
+	.window-content.dark .browser-tabs {
+		background: #191919;
+		border-bottom: 1px solid #242424;
+	}
+
+	.window-content.dark .browser-tabs .tabs .browser-tab {
+		color: #AAA;
+		border-right: 1px solid #242424;
+	}
+
+	.window-content.dark .browser-tabs .tabs .browser-tab.active {
+		color: #FFF;
+		background: #292929;
+	}
+
+	.window-content.dark .browser-tabs .tabs .browser-tab .button-close:hover {
+		background-color: #242424;
+	}
+
+	.window-content.dark .browser-tabs .browser-new-tab.button-new {
+		border-right: 1px solid #242424;
+	}
+	.window-content.dark .browser-tabs .browser-new-tab.button-new:hover {
+		background-color: #212121;
+	}
+
+	.window-content.dark .browser-controls {
+		background: #292929;
+		border-bottom: 1px solid #191919;
+	}
+
+	.window-content.dark {
+		background-color: #242424;
+    }
+    
+    .browser-controls .url-bar .browser-url {
+        background-color: #212121;
+        color: #AAA;
+        border-color: #212121;
+    }
+
+	.window-content.dark .browser-controls .url-bar .browser-url:focus {
+		color: #FFF;
+        background-color: #212121;
+        /*border-color: #404060;*/
+        border-color: #191919;
+	}
 </style>
 
 <div class="browser-tabs">
