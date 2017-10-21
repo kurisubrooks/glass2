@@ -12,9 +12,10 @@
         const remote = require("electron").remote;
         window.$ = window.jQuery = require("jquery");
 
+        //remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`)
+
         $(() => {
-            $("main").fadeIn(500);
-            setTimeout(() => $("login").animate({ height: "toggle", opacity: "toggle" }, 250), 1000);
+            $("body").fadeIn(500);
 
             $("login").submit((e) => {
                 let success = true;
@@ -30,95 +31,44 @@
         });
     </script>
 
-    <style>
-        main {
-            display: none;
-            background: url(../assets/images/wallpaper.jpg) no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        md-input-container {
-            width: 100%;
-        }
-
-        login {
-            display: none;
-            position: absolute;
-            width: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-        }
-
-        login header {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-            background: rgb(66, 133, 244);
-            height: 160px;
-            padding: 20px 30px;
-        }
-
-        login header title {
-            display: block;
-            font-size: 20px;
-            color: #FFFFFF;
-        }
-
-        login content {
-            display: flex;
-            flex-direction: column;
-            background: rgb(238, 238, 238);
-            height: 320px;
-            padding: 20px 30px 20px;
-        }
-
-        login footer {
-            display: flex;
-            justify-content: flex-end;
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-            background: rgb(228, 228, 228);
-        }
-    </style>
-
 </head>
 <body>
 
-    <script>remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`)</script>
+    <div class="container">
+        <div class="top">
+            <div class="time">
+                3:24
+            </div>
+            <div class="buttons">
+                <!--<button class="power"></button>-->
+            </div>
+        </div>
 
-    <!--<main>
+        <div class="login">
+            <div class="heads">
+                <div class="head ghost"></div>
+                <div class="head ghost"></div>
+                <div class="head" style="background-image: url(../assets/avatars/kurisu.png);"></div>
+                <div class="head active" style="background-image: url(../assets/avatars/sammy.png);"></div>
+                <div class="head" style="background-image: url(../assets/avatars/katie.png);"></div>
+                <div class="head ghost"></div>
+                <div class="head ghost"></div>
+            </div>
 
-        <login>
-            <form id="login" name="login">
-                <header>
-                    <title>Login</title>
-                </header>
+            <div class="form">
+                <div class="title">Sammy Sekai</div>
+                <div class="password">
+                    <input id="password" type="password" placeholder="Password" required>
+                </div>
+            </div>
+        </div>
 
-                <content>
-                    <md-input-container>
-                        <label>Username</label>
-                        <md-select name="type" ng-model="login.username" id="username" md-no-asterisk required>
-                            <md-option value="user:kurisu">Kurisu</md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-input-container>
-                        <label>Password</label>
-                        <input type="password" ng-model="login.password" id="password" md-no-asterisk required>
-                    </md-input-container>
-                </content>
-
-                <footer>
-                    <md-button type="submit">Submit</md-button>
-                </footer>
-            </form>
-        </login>
-
-    </main>-->
+        <div class="bottom">
+            <div class="info">
+                <img src="../assets/icons/lock.svg">
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

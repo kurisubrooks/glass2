@@ -1,52 +1,99 @@
-main {
-    display: none;
-    background: url(../images/wallpaper.jpg) no-repeat center center fixed;
-    background-size: cover;
-}
-
-md-input-container {
-    width: 100%;
-}
-
-login {
-    display: none;
-    position: absolute;
-    width: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-login header {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    background: rgb(66, 133, 244);
-    height: 160px;
-    padding: 20px 30px;
-}
-
-login header title {
-    display: block;
-    font-size: 20px;
+html,
+body {
+    background: #1F1F1F;
     color: #FFFFFF;
 }
 
-login content {
-    display: flex;
-    flex-direction: column;
-    background: rgb(238, 238, 238);
-    height: 320px;
-    padding: 20px 30px 20px;
+body {
+    display: none;
 }
 
-login footer {
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container .top {
     display: flex;
     justify-content: flex-end;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background: rgb(228, 228, 228);
+    align-items: center;
+    padding: 0 20px;
+    height: 48px;
+}
+
+.container .top .time {
+    font-family: "Roboto Condensed";
+    font-size: 28px;
+}
+
+.container .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 140px;
+    flex: 1;
+}
+
+.container .login .heads {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container .login .heads .head.active {
+    height: 140px;
+    width: 140px;
+}
+
+.container .login .heads .head.ghost {
+    background: transparent;
+}
+
+.container .login .heads .head {
+    height: 94px;
+    width: 94px;
+    border-radius: 50%;
+    background-image: url(../images/user.png);
+    background-size: contain;
+    margin: 0 20px;
+}
+
+.container .login .form {
+    margin-top: 40px;
+}
+
+.container .login .form .title {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.container .login .form .password input {
+    background: transparent;
+    border: none;
+    width: 340px;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.container .login .form .password input:focus {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.container .bottom {
+    display: flex;
+    height: 120px;
+    justify-content: center;
+}
+
+.container .bottom img {
+    height: 40px;
+    width: 40px;
 }
