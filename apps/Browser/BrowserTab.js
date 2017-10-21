@@ -76,22 +76,32 @@ class BrowserTab {
 
         // Process url (add http)
         let processedUrl;
-        if (/https?:\/\//.test(url)) {
+        if (/^https?:\/\//.test(url)) {
+            const validTLD = this.tlds.reduce((acc, val) =>
+              new RegExp(`^https?:\/\/(?:[^\.\s]+.)+${val}$`).test(url) // eslint-disable-line
+            );
             // URL with http:// or https://, it's all set
-            processedUrl = url;
+            if (validTLD) processedUrl = url;
         } else {
             // URL that needs to have http:// before it (maybe), check if it has a valid TLD, then go ahead and prepend it
-            let isProbablyUrl = false;
 
-            for (let i = 0; i < this.tlds.length; i++) {
-                isProbablyUrl = new RegExp(`.+\\.${this.tlds[i]}$`, "i").test(url);
-                if (isProbablyUrl) break;
-            }
+            const isURL = this.tlds.reduce((acc, val) => {
+                const test = new RegExp(`^(?:[^\.\s]+.)+${val}$`, "i").test(url); // eslint-disable-line
+                console.log(test);
+                return test || acc;
+            }, false);
 
-            if (isProbablyUrl) processedUrl = `http://${url}`;
+            console.log(isURL)
+
+            // for (let i = 0; i < this.tlds.length; i++) {
+            //     isProbablyUrl = new RegExp(`.+\\.${this.tlds[i]}$`, "i").test(url) || isProbablyUrl;
+            //     if (isProbablyUrl) break;
+            // }
+
+            if (isURL) processedUrl = `http://${url}`;
         }
 
-        if (!processedUrl) {
+        if (typeof processedUrl === "undefined") {
             // Assume its a query string, http://google.com/#q=${query}
             url = url.replace(/(\+)|(#)|(%)|(&)|(<)|(>)|( )/g, (match, plus, tag, percent, ampersand, lt, gt, space) => {
                 if (plus) return "%2B";
