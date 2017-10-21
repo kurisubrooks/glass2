@@ -33,22 +33,15 @@
             ];
 
             const padding = users.length - 1;
+            let selectedUserIndex = null;
             let selectedUser = null;
 
             for (let index = 0; index < users.length; index++) {
-                const head = $(`<div class="head" style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
+                const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
 
-                if (index === 0) {
-                    head.addClass("active");
-                    $(".login .form .title").text(users[index].name);
-                    selectedUser = users[index];
-                }
+                if (index === 0) selectUser(head);
 
                 $(".heads").append(head);
-            }
-
-            for (let ghosts = 0; ghosts < users.length - 1; ghosts++) {
-                $(".heads").prepend($(`<div class="head ghost"></div>`))
             }
 
             $("body").fadeIn(500);
@@ -57,6 +50,37 @@
                 let time = moment().format("H:mm");
                 if ($(".time").text() !== time) $(".time").text(time);
             }, 150);
+
+            $(".head").not(".ghost").click((e) => {
+                selectUser(e.target);
+            });
+
+            function selectUser(head) {
+                head = $(head);
+                const index = head.data("user");
+
+                if(selectedUserIndex === index) return;
+
+                $(".head").removeClass("active");
+
+                head.addClass("active");
+                $(".login .form .title").text(users[index].name);
+                selectedUserIndex = index;
+                selectedUser = users[selectedUserIndex]
+
+                $(".ghost").remove();
+
+                const rightElements = users.length - selectedUserIndex - 1;
+
+                addGhosts(Math.abs(selectedUserIndex - rightElements), selectedUserIndex > rightElements);
+            }
+
+            function addGhosts(amount, append) {
+                const type = append ? "append" : "prepend";
+                for (let ghosts = 0; ghosts < amount; ghosts++) {
+                    $(".heads")[type]($(`<div class="head ghost"></div>`));
+                }
+            }
 
             /*$("login").submit((e) => {
                 let success = true;

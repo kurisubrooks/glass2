@@ -42,7 +42,7 @@ body {
     flex-direction: row;
 }
 
-.container .login .heads .head:not(.ghost) {
+.container .login .heads .head:not(.ghost):not(.active) {
     cursor: pointer;
 }
 
