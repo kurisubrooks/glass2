@@ -1,32 +1,43 @@
-/*
 @font-face {
-    font-family: "Material Icons";
+    font-family: "Roboto";
     font-style: normal;
-    font-weight: 400;
-    src: local("Material Icons"),
-         local("MaterialIcons-Regular"),
-         url(../fonts/MaterialIcons-Regular.woff2) format("woff2"),
-         url(../fonts/MaterialIcons-Regular.woff) format("woff"),
-         url(../fonts/MaterialIcons-Regular.ttf) format("truetype");
+    font-weight: 300;
+    src: url("../fonts/Roboto-Light.ttf") format("truetype");
 }
-*/
 
 @font-face {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/Roboto-Regular.woff2?v=1.1.0") format("woff2"),
-         url("../fonts/Roboto-Regular.woff?v=1.1.0") format("woff"),
-         url("../fonts/Roboto-Regular.ttf?v=1.1.0") format("truetype");
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
-    src: url("../fonts/Roboto-Medium.woff2?v=1.1.0") format("woff2"),
-         url("../fonts/Roboto-Medium.woff?v=1.1.0") format("woff"),
-         url("../fonts/Roboto-Medium.ttf?v=1.1.0") format("truetype");
+    src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/RobotoCondensed-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/RobotoCondensed-Bold.ttf") format("truetype");
 }
 
 *,
