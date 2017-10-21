@@ -44,7 +44,11 @@ class Window {
         $(document).mousemove((evt) => { this.doMousemovement(evt.pageX, evt.pageY); });
         $(document).mouseup(() => { this.stopMovements(); });
 
-        if (this.theme === "dark") this.window.addClass("dark");
+        if (this.theme === "dark") {
+            this.window.addClass("dark");
+            this.window.find(".window-content").addClass("dark");
+        }
+
         if (!this.frame) this.window.addClass("no-frame");
     }
 
