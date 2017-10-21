@@ -70,7 +70,6 @@ body {
 
 .container .login .form .title {
     font-size: 30px;
-    font-weight: 400;
     text-align: center;
     margin-bottom: 15px;
     color: rgba(255, 255, 255, 0.85);
@@ -82,6 +81,8 @@ body {
     width: 340px;
     color: #FFFFFF;
     font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: 2px solid transparent;
