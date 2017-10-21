@@ -17,11 +17,10 @@ class BrowserApp extends App {
         super("Browser", BrowserWindow);
     }
 
-    /*
     get theme() {
         return "dark";
     }
-
+    /*
     get frame() {
         return false;
     }
@@ -124,6 +123,7 @@ class BrowserWindow extends Window {
         this.tabs.get(tabID).webview.remove();
         this.tabs.get(tabID).tab.remove();
         this.tabs.delete(tabID);
+        if (tabID === this.currentTab) this.focusTab(this.tabs.keys().next().value);
     }
 
     tabSwitch() {
