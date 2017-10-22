@@ -8,7 +8,7 @@ const tldsFilepath = `${__dirname}/tlds.txt`;
 // Get an array of all tlds
 const tldsRaw = fs.readFileSync(tldsFilepath, "utf8");
 // Splits the TLDS, removes last empty line, and removes char 13 at end of each entry
-const tlds = tldsRaw.split("\n").slice(0, -1).map(v => v.slice(0, -1));
+const tlds = tldsRaw.split("\n").slice(0, -1).map(v => v.trim());
 
 // Move this to some settings file somewhere
 const defaultPage = "https://www.google.com/"; // eslint-disable-line no-unused-vars
