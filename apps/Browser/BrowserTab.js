@@ -6,7 +6,7 @@ const $ = require("jquery");
 const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
 const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
 
-const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-zA-Z\d]{2,63})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
+const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-zA-Z\d-]{2,63})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
 
 class BrowserTab {
     constructor(window, options) {
