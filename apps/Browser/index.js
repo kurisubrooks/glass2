@@ -113,6 +113,11 @@ class BrowserWindow extends Window {
         if (!justOpened) {
             this.tabSwitch();
         }
+
+        setTimeout(() => {
+            this.width -= 1;
+            this.width += 1;
+        }, 10);
     }
 
     closeTab(tabID) {
