@@ -1,77 +1,3 @@
-/* Animations */
-
-@keyframes appear {
-    0% {
-        transform: scale(0, 0);
-    } 100% {
-        transform: rotate(1, 1);
-    }
-}
-
-@keyframes close {
-    0% {
-        transform: scale(1, 1);
-    } 100% {
-        transform: scale(0, 0);
-    }
-}
-
-/* Exposé */
-
-.desktop.expose .window {
-    border-radius: 0;
-}
-
-.desktop.expose .window:hover {
-    box-shadow: 0 0 0 3px white;
-}
-
-.desktop.expose .window.active,
-.desktop.expose .window {
-    transform: translate(0, 0, 0);
-    transition: top 0.5s ease-out, left 0.5s ease-out;
-}
-
-.desktop.expose .window.active section.window-content,
-.desktop.expose .window section.window-content {
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* Window Fullscreen */
-
-.desktop.fullscreen .window {
-    transform: translate(0, 0, 0);
-    transition: all 0.5s ease-out;
-    border-radius: 0;
-}
-
-.desktop.fullscreen header.window-title {
-    transition: all 0.5s ease-out;
-    height: 50px;
-    font-size: 40px;
-    padding: 40px 50px;
-    background: transparent;
-}
-
-.desktop.fullscreen header.window-title .window-buttons {
-    display: none;
-}
-
-.desktop.fullscreen header.window-title h1 {
-    transition: all 0.5s ease-out;
-    font-size: 40px;
-}
-
-.desktop.fullscreen section.window-content {
-    transition: all 0.5s ease-out;
-    padding: 0 40px;
-}
-
-.desktop.fullscreen .window-resize {
-    display: none;
-}
-
 /* Window Styling */
 
 .window {
@@ -323,4 +249,38 @@
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.5s ease-out;
+}
+
+/* Window Fullscreen */
+
+.desktop.fullscreen .window {
+    transform: translate(0, 0, 0);
+    transition: all 0.5s ease-out;
+    border-radius: 0;
+}
+
+.desktop.fullscreen header.window-title {
+    transition: all 0.5s ease-out;
+    height: 50px;
+    font-size: 40px;
+    padding: 40px 50px;
+    background: transparent;
+}
+
+.desktop.fullscreen header.window-title .window-buttons {
+    display: none;
+}
+
+.desktop.fullscreen header.window-title h1 {
+    transition: all 0.5s ease-out;
+    font-size: 40px;
+}
+
+.desktop.fullscreen section.window-content {
+    transition: all 0.5s ease-out;
+    padding: 0 40px;
+}
+
+.desktop.fullscreen .window-resize {
+    display: none;
 }
