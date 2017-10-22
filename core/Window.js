@@ -21,7 +21,7 @@ class Window {
         this.id = guid();
         this.maximized = false;
 
-        console.log(this.title, options.frame);
+        // console.log(this.title, options.frame);
 
         this.window = new Template("window").build({
             title: this.title,
@@ -43,6 +43,8 @@ class Window {
 
         $(document).mousemove((evt) => { this.doMousemovement(evt.pageX, evt.pageY); });
         $(document).mouseup(() => { this.stopMovements(); });
+
+        this.window.find(".window-title").on("dblclick", () => this.maximize());
 
         if (this.theme === "dark") {
             this.window.addClass("dark");
