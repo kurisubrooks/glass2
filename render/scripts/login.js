@@ -79,13 +79,10 @@ $(() => {
 
         const form = $(evt.target);
 
-        let success = true;
         let user = users[form.find(".head.active").data("user")];
         let pass = form.find("#password").val();
 
-        success &= user.password === pass;
-
-        if (success) {
+        if (user.password === pass) {
             setTimeout(() => $("login").fadeOut(250), 1000);
             setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1200);
         } else {
