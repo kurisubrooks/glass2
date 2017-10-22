@@ -40,6 +40,13 @@
     src: url("../fonts/RobotoCondensed-Bold.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Noto Sans CJK";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/NotoSansCJK-Regular.otf") format("opentype");
+}
+
 *,
 *:active,
 *:focus,
@@ -55,7 +62,7 @@
 html, body {
     margin: 0;
     height: 100%;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", "Noto Sans CJK", sans-serif;
     /*background-color: #000000;*/
     overflow: hidden;
 }
