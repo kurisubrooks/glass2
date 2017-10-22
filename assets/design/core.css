@@ -41,28 +41,28 @@
 }
 
 @font-face {
-    font-family: "Noto Sans CJK";
+    font-family: "Noto Sans CJK JP";
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/NotoSansCJKjp-Regular.otf") format("opentype");
 }
 
 @font-face {
-    font-family: "Noto Sans CJK";
+    font-family: "Noto Sans CJK KR";
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/NotoSansCJKkr-Regular.otf") format("opentype");
 }
 
 @font-face {
-    font-family: "Noto Sans CJK";
+    font-family: "Noto Sans CJK TC";
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/NotoSansCJKtc-Regular.otf") format("opentype");
 }
 
 @font-face {
-    font-family: "Noto Sans CJK";
+    font-family: "Noto Sans CJK SC";
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/NotoSansCJKsc-Regular.otf") format("opentype");
@@ -83,7 +83,7 @@
 html, body {
     margin: 0;
     height: 100%;
-    font-family: "Roboto", "Noto Sans CJK", sans-serif;
+    font-family: "Roboto", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK TC", "Noto Sans CJK SC", sans-serif;
     /*background-color: #000000;*/
     overflow: hidden;
 }
