@@ -86,6 +86,7 @@ $(() => {
         if (user.password === pass) {
             input.attr("disabled", true);
             input.blur();
+            localStorage.currentUser = JSON.stringify(user);
             setTimeout(() => $(".container").fadeOut(250), 800);
             setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1100);
         } else {

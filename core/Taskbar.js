@@ -15,6 +15,8 @@ class Taskbar {
         this.appArea = this.container.find(".apps");
         this.clock = this.container.find("#clock");
 
+        this.container.find("#userprofile").attr("src", `../assets/avatars/${JSON.parse(localStorage.currentUser).avatar}.png`);
+
         setInterval(() => this.updateClock(), 150);
     }
 
