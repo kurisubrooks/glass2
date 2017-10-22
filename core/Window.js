@@ -33,9 +33,13 @@ class Window {
 
         // Initialize events for dragging window around
         this.window.find(".window-title").mousedown((evt) => {
+            $(evt.target).data("mousedown", true);
+
             if (evt.target === this.window.find(".window-title h1")[0]) {
-                this.startDrag(evt.pageX, evt.pageY);
+                this.startDrag(evt.pageX, evt.pageY, evt.target);
             }
+        }).on("mouseup mouseleave", (evt) => {
+            $(evt.target).data("mousedown", false);
         });
 
         // Initialize events for resizing window
@@ -93,14 +97,22 @@ class Window {
         this.window.remove();
     }
 
-    startDrag(mouseX, mouseY) {
-        if (this.maximized) {
-            this.maximize();
-            this.posX = 0;
-            this.posY = 0;
+    startDrag(mouseX, mouseY, target) {
+        if (this.maximized && target) {
+            setTimeout(() => {
+                if ($(target).data("mousedown")) {
+                    console.log("trigger");
+                    this.maximize();
+                    this.posX = 0;
+                    this.posY = 0;
+
+                    this.startDrag(mouseX, mouseY);
+                }
+            }, 150);
+        } else {
+            this.dragging = true;
+            this.startMovement(mouseX, mouseY);
         }
-        this.dragging = true;
-        this.startMovement(mouseX, mouseY);
     }
 
     startResize(mouseX, mouseY) {

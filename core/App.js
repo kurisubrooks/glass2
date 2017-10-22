@@ -18,6 +18,14 @@ class App {
         // console.log(this.name, this.frame);
     }
 
+    set contextMenu(contextMenu) {
+        this.context = contextMenu;
+    }
+
+    get contextMenu() {
+        return this.context;
+    }
+
     get theme() {
         return "light";
     }

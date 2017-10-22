@@ -118,7 +118,7 @@ class BrowserWindow extends Window {
         this.tabs.get(tabID).webview.remove();
         this.tabs.get(tabID).tab.remove();
         this.tabs.delete(tabID);
-        if (this.tabs.size <= 1) return this.close();
+        if (this.tabs.size < 1) return this.close();
         if (tabID === this.currentTab) this.focusTab(this.tabs.keys().next().value);
         return false;
     }

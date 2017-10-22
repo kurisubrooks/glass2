@@ -42,6 +42,10 @@ module.exports = class ContextMenu {
         });
     }
 
+    remove() {
+        this.container.remove();
+    }
+
     fillContainerWithOptions(container, items) {
         for (let i = 0; i < items.length; i++) {
             let item = items[i], el;

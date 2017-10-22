@@ -32,7 +32,7 @@ class Taskbar {
             icon: app.icon
         });
 
-        const appContextMenu = new ContextMenu({ // eslint-disable-line no-unused-vars
+        app.contextMenu = new ContextMenu({ // eslint-disable-line no-unused-vars
             location: appItem,
             controls: [
                 {
@@ -44,6 +44,7 @@ class Taskbar {
         });
 
         appItem.on("click", app.onClick.bind(app));
+
         this.appArea.append(appItem);
     }
 
@@ -51,6 +52,8 @@ class Taskbar {
         this.apps.delete(app.id);
         const appItem = this.appArea.find(`#app_${app.name}_${app.id}`);
         appItem.remove();
+
+        app.contextMenu.remove();
     }
 
     getPins() {
