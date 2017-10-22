@@ -25,6 +25,7 @@ body {
 .container .top .time {
     font-family: "Roboto Condensed";
     font-size: 28px;
+    cursor: default;
 }
 
 .container .login {
@@ -73,6 +74,7 @@ body {
     text-align: center;
     margin-bottom: 15px;
     color: rgba(255, 255, 255, 0.85);
+    cursor: default;
 }
 
 .container .login .form .password input {
@@ -88,12 +90,17 @@ body {
     border-bottom: 2px solid transparent;
 }
 
+.container .login .form .password input:disabled {
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.4);
+}
+
 .container .login .form .password input:focus {
-    border-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.8);
 }
 
 .container .login.error .form .password input:focus {
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    animation: shake 0.7s cubic-bezier(.36, .07, .19, .97) both;
     border-color: rgba(255, 71, 71, 0.9);
 }
 

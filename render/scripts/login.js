@@ -78,17 +78,21 @@ $(() => {
         evt.preventDefault();
 
         const form = $(evt.target);
+        const input = form.find("#password");
 
         let user = users[form.find(".head.active").data("user")];
-        let pass = form.find("#password").val();
+        let pass = input.val();
 
         if (user.password === pass) {
-            setTimeout(() => $("login").fadeOut(250), 1000);
-            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1200);
+            input.attr("disabled", true);
+            input.blur();
+            setTimeout(() => $(".container").fadeOut(250), 800);
+            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1100);
         } else {
-            form.find("#password").select();
-            form.addClass("error").one("animationend", () => {
+            form.addClass("error");
+            form.one("animationend", () => {
                 form.removeClass("error");
+                input.select();
             });
         }
 
