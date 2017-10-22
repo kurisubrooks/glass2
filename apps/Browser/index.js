@@ -20,11 +20,6 @@ class BrowserApp extends App {
     get theme() {
         return "dark";
     }
-    /*
-    get frame() {
-        return false;
-    }
-    */
 }
 
 class BrowserWindow extends Window {
@@ -47,15 +42,15 @@ class BrowserWindow extends Window {
         const urlBar = this.urlBar = this.window.find(".browser-url");
         const newTabButton = this.newTabButton = this.window.find(".browser-new-tab");
 
-        backButton.click(() => {
+        backButton.on("click", () => {
             this.openTab.goBack();
         });
 
-        forwardButton.click(() => {
+        forwardButton.on("click", () => {
             this.openTab.goForward();
         });
 
-        refreshButton.click(() => {
+        refreshButton.on("click", () => {
             this.openTab.reload();
         });
 
@@ -72,7 +67,7 @@ class BrowserWindow extends Window {
             }).select();
         });
 
-        newTabButton.click(() => {
+        newTabButton.on("click", () => {
             this.focusTab(this.newTab(), true);
         });
 
@@ -85,15 +80,15 @@ class BrowserWindow extends Window {
         const webview = this.window.find("webview")[0];
 
         if (!webview.canGoBack()) {
-            this.backButton.attr("disabled", true);
+            this.backButton.addClass("disabled");
         } else {
-            this.backButton.removeAttr("disabled");
+            this.backButton.removeClass("disabled");
         }
 
         if (!webview.canGoForward()) {
-            this.forwardButton.attr("disabled", true);
+            this.forwardButton.addClass("disabled");
         } else {
-            this.forwardButton.removeAttr("disabled");
+            this.forwardButton.removeClass("disabled");
         }
     }
 
