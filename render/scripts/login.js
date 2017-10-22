@@ -52,6 +52,7 @@ const addGhosts = (amount, append) => {
 };
 
 $(() => {
+    // Loop Through Users, Add them to the page
     for (let index = 0; index < users.length; index++) {
         const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
 
@@ -60,15 +61,19 @@ $(() => {
         $(".heads").append(head);
     }
 
+    // Update Time
     setInterval(() => {
         let time = moment().format("h:mm");
         if ($(".time").text() !== time) $(".time").text(time);
     }, 150);
 
+    // User Head Select
     $(".head").not(".ghost").click(el => selectUser(el.target));
 
+    // Show UI
     $("body").fadeIn(500);
 
+    // Handle Login
     $(".login").submit((evt) => {
         evt.preventDefault();
 
@@ -82,8 +87,7 @@ $(() => {
 
         if (success) {
             setTimeout(() => $("login").fadeOut(250), 1000);
-            setTimeout(() => $("main").fadeOut(250), 1500);
-            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
+            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1200);
         } else {
             form.find("#password").select();
             form.addClass("error").one("animationend", () => {
