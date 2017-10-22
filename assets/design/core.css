@@ -44,7 +44,28 @@
     font-family: "Noto Sans CJK";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/NotoSansCJK-Regular.otf") format("opentype");
+    src: url("../fonts/NotoSansCJKjp-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Noto Sans CJK";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/NotoSansCJKkr-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Noto Sans CJK";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/NotoSansCJKtc-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Noto Sans CJK";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/NotoSansCJKsc-Regular.otf") format("opentype");
 }
 
 *,
