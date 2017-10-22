@@ -6,6 +6,8 @@ const $ = require("jquery");
 const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
 const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
 
+const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-z]{2,4})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
+
 class BrowserTab {
     constructor(window, options) {
         this.window = window;
@@ -73,52 +75,18 @@ class BrowserTab {
 
     loadURL(url) {
         const webview = this.webview[0];
+        const validURL = new RegExp(urlRegex).exec(url);
 
-        // Process url (add http)
-        let processedUrl;
-        if (/^https?:\/\//.test(url)) {
-            const validTLD = this.tlds.reduce((acc, val) =>
-              new RegExp(`^https?:\/\/(?:[^\.\s]+.)+${val}$`).test(url) // eslint-disable-line
-            );
-            // URL with http:// or https://, it's all set
-            if (validTLD) processedUrl = url;
+        if (validURL && this.tlds.indexOf(validURL[1].toUpperCase()) !== -1) {
+            if (!/^https?:\/\//.test(url)) {
+                url = `http://${url}`;
+            }
         } else {
-            // URL that needs to have http:// before it (maybe), check if it has a valid TLD, then go ahead and prepend it
-
-            const isURL = this.tlds.reduce((acc, val) => {
-                const test = new RegExp(`^(?:[^\.\s]+.)+${val}$`, "i").test(url); // eslint-disable-line
-                console.log(test);
-                return test || acc;
-            }, false);
-
-            console.log(isURL);
-
-            // for (let i = 0; i < this.tlds.length; i++) {
-            //     isProbablyUrl = new RegExp(`.+\\.${this.tlds[i]}$`, "i").test(url) || isProbablyUrl;
-            //     if (isProbablyUrl) break;
-            // }
-
-            if (isURL) processedUrl = `http://${url}`;
+            url = `https://www.google.com/#q=${encodeURIComponent(url)}`;
         }
 
-        if (typeof processedUrl === "undefined") {
-            // Assume its a query string, http://google.com/#q=${query}
-            url = url.replace(/(\+)|(#)|(%)|(&)|(<)|(>)|( )/g, (match, plus, tag, percent, ampersand, lt, gt, space) => {
-                if (plus) return "%2B";
-                if (tag) return "%23";
-                if (percent) return "%25";
-                if (ampersand) return "%26";
-                if (lt) return "%3E";
-                if (gt) return "%3C";
-                if (space) return "+";
-                return match;
-            });
-
-            processedUrl = `https://www.google.com/#q=${url}`;
-        }
-
-        this.window.urlBar.val(processedUrl);
-        webview.loadURL(processedUrl);
+        this.window.urlBar.val(url);
+        webview.loadURL(url);
     }
 
     get tlds() {
