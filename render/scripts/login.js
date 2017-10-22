@@ -52,6 +52,7 @@ const addGhosts = (amount, append) => {
 };
 
 $(() => {
+    // Loop Through Users, Add them to the page
     for (let index = 0; index < users.length; index++) {
         const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
 
@@ -60,28 +61,41 @@ $(() => {
         $(".heads").append(head);
     }
 
+    // Update Time
     setInterval(() => {
         let time = moment().format("h:mm");
         if ($(".time").text() !== time) $(".time").text(time);
     }, 150);
 
+    // User Head Select
     $(".head").not(".ghost").click(el => selectUser(el.target));
 
+    // Show UI
     $("body").fadeIn(500);
 
-    setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
+    // Handle Login
+    $(".login").submit((evt) => {
+        evt.preventDefault();
 
-    /*
-    $("login").submit((e) => {
-        let success = true;
-        let user = e.target[0].value.replace("user:", "");
-        let pass = e.target[1].value;
+        const form = $(evt.target);
+        const input = form.find("#password");
 
-        if (success) {
-            setTimeout(() => $("login").fadeOut(250), 1000);
-            setTimeout(() => $("main").fadeOut(250), 1500);
-            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
+        let user = users[form.find(".head.active").data("user")];
+        let pass = input.val();
+
+        if (user.password === pass) {
+            input.attr("disabled", true);
+            input.blur();
+            setTimeout(() => $(".container").fadeOut(250), 800);
+            setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1100);
+        } else {
+            form.addClass("error");
+            form.one("animationend", () => {
+                form.removeClass("error");
+                input.select();
+            });
         }
+
+        return false;
     });
-    */
 });
