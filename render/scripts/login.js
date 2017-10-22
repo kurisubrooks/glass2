@@ -69,19 +69,28 @@ $(() => {
 
     $("body").fadeIn(500);
 
-    setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
+    $(".login").submit((evt) => {
+        evt.preventDefault();
 
-    /*
-    $("login").submit((e) => {
+        const form = $(evt.target);
+
         let success = true;
-        let user = e.target[0].value.replace("user:", "");
-        let pass = e.target[1].value;
+        let user = users[form.find(".head.active").data("user")];
+        let pass = form.find("#password").val();
+
+        success &= user.password === pass;
 
         if (success) {
             setTimeout(() => $("login").fadeOut(250), 1000);
             setTimeout(() => $("main").fadeOut(250), 1500);
             setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1600);
+        } else {
+            form.find("#password").select();
+            form.addClass("error").one("animationend", () => {
+                form.removeClass("error");
+            });
         }
+
+        return false;
     });
-    */
 });
