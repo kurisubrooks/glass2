@@ -39,7 +39,7 @@
 
 .toolbar .apps #app_launcher {
     width: 50px;
-    background-image: url(../icons/apps.svg);
+    background-image: url(../icons/apps_light.svg);
     background-size: 24px;
     background-repeat: no-repeat;
     background-position: 12px 16px;
