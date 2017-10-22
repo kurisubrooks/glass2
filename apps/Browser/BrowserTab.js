@@ -91,7 +91,7 @@ class BrowserTab {
                 return test || acc;
             }, false);
 
-            console.log(isURL)
+            console.log(isURL);
 
             // for (let i = 0; i < this.tlds.length; i++) {
             //     isProbablyUrl = new RegExp(`.+\\.${this.tlds[i]}$`, "i").test(url) || isProbablyUrl;
