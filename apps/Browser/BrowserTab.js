@@ -6,7 +6,7 @@ const $ = require("jquery");
 const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
 const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
 
-const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-z]{2,4})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
+const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-zA-Z\d]{2,63})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
 
 class BrowserTab {
     constructor(window, options) {
@@ -76,6 +76,11 @@ class BrowserTab {
     loadURL(url) {
         const webview = this.webview[0];
         const validURL = new RegExp(urlRegex).exec(url);
+
+        console.log(url);
+        console.log(urlRegex);
+
+        console.log(validURL);
 
         if (validURL && this.tlds.indexOf(validURL[1].toUpperCase()) !== -1) {
             if (!/^https?:\/\//.test(url)) {
