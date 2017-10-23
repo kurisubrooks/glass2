@@ -1,7 +1,6 @@
 const guid = require("../../core/Util/guid");
 const fs = require("fs");
 const $ = require("jquery");
-// const color = require("tinycolor2");
 
 const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
 const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
@@ -22,14 +21,9 @@ class BrowserTab {
         window.tabArea.append(webview);
         window.tabsBar.append(tab);
 
-        /*
-        webview.on("did-change-theme-color", event => {
-            const theme = event.originalEvent.themeColor;
-
-            window.css("background-color", theme);
-            if (color(theme).isDark()) window.addClass("dark");
+        webview.on("close", () => {
+            window.closeTab(this.id);
         });
-        */
 
         webview.on("page-title-updated", event => {
             this.tab.find(".text").text(event.originalEvent.title);
@@ -46,7 +40,7 @@ class BrowserTab {
             window.focusTab(this.id);
         });
 
-        closeButton.click((event) => {
+        closeButton.click(event => {
             window.closeTab(this.id);
             event.stopPropagation();
         });
