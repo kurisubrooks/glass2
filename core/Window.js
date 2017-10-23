@@ -32,21 +32,21 @@ class Window {
         });
 
         // Initialize events for dragging window around
-        this.window.find(".window-title").mousedown((evt) => {
+        this.window.find(".window-title").mousedown(evt => {
             $(evt.target).data("mousedown", true);
 
             if (evt.target === this.window.find(".window-title h1")[0]) {
                 this.startDrag(evt.pageX, evt.pageY, evt.target);
             }
-        }).on("mouseup mouseleave", (evt) => {
+        }).on("mouseup mouseleave", evt => {
             $(evt.target).data("mousedown", false);
         });
 
         // Initialize events for resizing window
-        this.window.find(".window-resize").mousedown((evt) => { this.startResize(evt.pageX, evt.pageY); });
+        this.window.find(".window-resize").mousedown(evt => this.startResize(evt.pageX, evt.pageY));
 
-        $(document).mousemove((evt) => { this.doMousemovement(evt.pageX, evt.pageY); });
-        $(document).mouseup(() => { this.stopMovements(); });
+        $(document).mousemove(evt => this.doMousemovement(evt.pageX, evt.pageY));
+        $(document).mouseup(() => this.stopMovements());
 
         this.window.find(".window-title").on("dblclick", () => this.maximize());
 
@@ -60,7 +60,6 @@ class Window {
 
     openIn(windowArea) {
         $(windowArea).append(this.window);
-
         return this;
     }
 

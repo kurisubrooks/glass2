@@ -21,6 +21,7 @@ let startup = () => {
 };
 
 app.on("ready", startup);
+
 app.on("window-all-closed", () => app.quit());
 
 app.on("activate", () => {
