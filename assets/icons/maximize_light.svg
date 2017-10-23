@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
 <style type="text/css">
@@ -7,6 +7,5 @@
 	.st1{fill:#FFFFFF;}
 </style>
 <path class="st0" d="M0,0h24v24H0V0z"/>
-<path class="st0" d="M0,0h24v24H0V0z"/>
-<path class="st1" d="M20,4H4v16h16V4z M18,18H6V6h12V18z"/>
+<path class="st1" d="M20,4.5H4v16h16V4.5z M18,18.5H6v-12h12V18.5z"/>
 </svg>
