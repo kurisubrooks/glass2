@@ -14,12 +14,28 @@
     border-radius: 3px;
 }
 
-.window.no-frame .window-box header {
-    display: none !important;
-}
-
 .window.maximized {
     border-radius: 0;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: calc(100% - 54px);
+    max-height: calc(100% - 54px);
+}
+
+.window.maximized .window-box button.window-resize {
+    display: none;
+}
+
+.window.maximized .window-box header.window-title button.window-maximize {
+    background-image: url(../icons/maximized.svg);
+}
+
+.window.maximized.dark .window-box header.window-title button.window-maximize {
+    background-image: url(../icons/maximized_light.svg);
+}
+
+.window.no-frame .window-box header {
+    display: none !important;
 }
 
 .window .window-overlay {
