@@ -2,21 +2,18 @@ const Sequelize = require("sequelize");
 const db = require("../Database");
 
 const User = db.define("users", {
-    guid: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        primaryKey: true,
-        unique: true
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
+    token: Sequelize.STRING,
+    disabled: Sequelize.BOOLEAN,
+    real_name: Sequelize.STRING,
+    username: Sequelize.STRING,
+    hash: Sequelize.STRING,
+    salt: Sequelize.STRING,
+    hint: Sequelize.STRING,
+    email: Sequelize.STRING,
+    permissions: Sequelize.STRING,
+    data: Sequelize.STRING
 });
 
-User.sync();
+User.sync({ alter: true });
+
 module.exports = User;
