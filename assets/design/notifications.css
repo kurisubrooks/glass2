@@ -2,19 +2,15 @@
     position: absolute;
     z-index: 10001;
     bottom: 70px;
-    right: 0;
+    right: 10px;
 }
 
 .notifications.pos-top-right {
-    top: 50px !important;
+    top: 10px !important;
 }
 
 .notifications.pos-bottom-right {
-    bottom: 70px !important;
-}
-
-.notifications.pos-right-pad {
-    right: 14px !important;
+    bottom: 64px !important;
 }
 
 .notification {
