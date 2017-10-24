@@ -1,7 +1,9 @@
+
 const App = require("../../core/App");
 const Window = require("../../core/Window");
 const BrowserTab = require("./BrowserTab");
 
+const path = require('path');
 const fs = require("fs");
 const tldsFilepath = `${__dirname}/tlds.txt`;
 
@@ -16,6 +18,9 @@ const defaultPage = "https://www.google.com/"; // eslint-disable-line no-unused-
 class BrowserApp extends App {
     constructor() {
         super("Browser", BrowserWindow);
+
+        const styles = fs.readFileSync(path.join(__dirname, "templates/style.html"));
+        this.content = this.content.replace("{{styles}}", styles);
     }
 
     get theme() {
