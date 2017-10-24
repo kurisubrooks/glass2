@@ -134,17 +134,49 @@
         display: flex;
         align-items: center;
         flex: 1;
+
+        border: 1px solid #E5E5E5;
+        background: #FFFFFF;
+        border-radius: 4px;
+        margin: 2px 2px 2px 8px;
+    }
+
+    .browser-controls .url-bar .ssl-status {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 6px 0;
+        padding: 0 10px;
+        color: rgba(0, 0, 0, 0.8);
+        border-right: 1px solid #E5E5E5;
+    }
+
+    .browser-controls .url-bar .ssl-status .ssl-icon {
+        height: 24px;
+        width: 18px;
+        margin-right: 5px;
+        background-image: url(../apps/Browser/icons/ssl.svg);
+        background-size: 18px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .browser-controls .url-bar .ssl-status .ssl-icon.secure {
+        background-image: url(../apps/Browser/icons/ssl_valid.svg);
+    }
+
+    .browser-controls .url-bar .ssl-status .ssl-icon.insecure {
+        background-image: url(../apps/Browser/icons/ssl_invalid.svg);
     }
 
     .browser-controls .url-bar .browser-url {
-        width: 100%;
+        flex: 1;
         border: none;
-        font-family: inherit;
+        padding: 8px 14px;
         font-size: 14px;
-        padding: 6px 14px;
-        border: 1px solid #E5E5E5;
-        border-radius: 4px;
-        margin: 0 8px;
+        font-family: inherit;
+        background: transparent;
     }
 
     .browser-controls .url-bar .browser-url:focus {
@@ -251,6 +283,11 @@
     </div>
 
     <div class="url-bar">
+        <div class="ssl-status">
+            <div class="ssl-icon secure"></div>
+            <div class="ssl-string"></div>
+        </div>
+
         <input class="browser-url">
     </div>
 
