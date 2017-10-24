@@ -19,7 +19,7 @@ class BrowserApp extends App {
     }
 
     get theme() {
-        return "light";
+        return "dark";
     }
 }
 
