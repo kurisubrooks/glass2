@@ -27,11 +27,11 @@
 }
 
 .window.maximized .window-box header.window-title button.window-maximize {
-    background-image: url(../icons/maximized.svg);
+    background-image: url(../../assets/icons/maximized.svg);
 }
 
 .window.maximized.dark .window-box header.window-title button.window-maximize {
-    background-image: url(../icons/maximized_light.svg);
+    background-image: url(../../assets/icons/maximized_light.svg);
 }
 
 .window.no-frame .window-box header {
@@ -114,27 +114,27 @@
 }
 
 .window .window-box header.window-title button.window-close {
-    background: url(../icons/close.svg) center center no-repeat;
+    background: url(../../assets/icons/close.svg) center center no-repeat;
 }
 
 .window.dark .window-box header.window-title button.window-close {
-    background: url(../icons/close_light.svg) center center no-repeat;
+    background: url(../../assets/icons/close_light.svg) center center no-repeat;
 }
 
 .window .window-box header.window-title button.window-maximize {
-    background: url(../icons/maximize.svg) center center no-repeat;
+    background: url(../../assets/icons/maximize.svg) center center no-repeat;
 }
 
 .window.dark .window-box header.window-title button.window-maximize {
-    background: url(../icons/maximize_light.svg) center center no-repeat;
+    background: url(../../assets/icons/maximize_light.svg) center center no-repeat;
 }
 
 .window .window-box header.window-title button.window-minimize {
-    background: url(../icons/minimize.svg) center center no-repeat;
+    background: url(../../assets/icons/minimize.svg) center center no-repeat;
 }
 
 .window.dark .window-box header.window-title button.window-minimize {
-    background: url(../icons/minimize_light.svg) center center no-repeat;
+    background: url(../../assets/icons/minimize_light.svg) center center no-repeat;
 }
 
 .window .window-box header.window-title.hide {

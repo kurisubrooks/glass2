@@ -60,7 +60,7 @@ body {
     height: 94px;
     width: 94px;
     border-radius: 50%;
-    background-image: url(../images/user.png);
+    background-image: url(../../assets/images/user.png);
     background-size: contain;
     margin: 0 20px;
 }

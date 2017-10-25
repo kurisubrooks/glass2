@@ -2,70 +2,70 @@
     font-family: "Roboto";
     font-style: normal;
     font-weight: 300;
-    src: url("../fonts/Roboto-Light.ttf") format("truetype");
+    src: url("../../assets/fonts/Roboto-Light.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    src: url("../../assets/fonts/Roboto-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
-    src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+    src: url("../../assets/fonts/Roboto-Medium.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 300;
-    src: url("../fonts/RobotoCondensed-Light.ttf") format("truetype");
+    src: url("../../assets/fonts/RobotoCondensed-Light.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/RobotoCondensed-Regular.ttf") format("truetype");
+    src: url("../../assets/fonts/RobotoCondensed-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 500;
-    src: url("../fonts/RobotoCondensed-Bold.ttf") format("truetype");
+    src: url("../../assets/fonts/RobotoCondensed-Bold.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Noto Sans CJK JP";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/NotoSansCJKjp-Regular.otf") format("opentype");
+    src: url("../../assets/fonts/NotoSansCJKjp-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Noto Sans CJK KR";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/NotoSansCJKkr-Regular.otf") format("opentype");
+    src: url("../../assets/fonts/NotoSansCJKkr-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Noto Sans CJK TC";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/NotoSansCJKtc-Regular.otf") format("opentype");
+    src: url("../../assets/fonts/NotoSansCJKtc-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Noto Sans CJK SC";
     font-style: normal;
     font-weight: 400;
-    src: url("../fonts/NotoSansCJKsc-Regular.otf") format("opentype");
+    src: url("../../assets/fonts/NotoSansCJKsc-Regular.otf") format("opentype");
 }
 
 *,
