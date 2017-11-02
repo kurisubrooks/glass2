@@ -3,14 +3,8 @@ const App = require("../../core/App");
 const Window = require("../../core/Window");
 const BrowserTab = require("./BrowserTab");
 
+const fs = require('fs');
 const path = require('path');
-const fs = require("fs");
-const tldsFilepath = `${__dirname}/tlds.txt`;
-
-// Get an array of all tlds
-const tldsRaw = fs.readFileSync(tldsFilepath, "utf8");
-// Splits the TLDS, removes last empty line, and removes char 13 at end of each entry
-const tlds = tldsRaw.split("\n").slice(0, -1).map(v => v.trim());
 
 // Move this to some settings file somewhere
 const defaultPage = "https://www.google.com/"; // eslint-disable-line no-unused-vars
@@ -31,7 +25,6 @@ class BrowserApp extends App {
 class BrowserWindow extends Window {
     constructor(options) {
         super(options);
-        this.tlds = tlds;
     }
 
     openIn(windowArea) {

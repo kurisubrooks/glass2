@@ -1,11 +1,10 @@
 const guid = require("../../core/Util/guid");
 const fs = require("fs");
 const $ = require("jquery");
+const validateUrl = require('url-validate');
 
 const template = fs.readFileSync(`${__dirname}/templates/tab-template.html`, "utf8");
 const barTemplate = fs.readFileSync(`${__dirname}/templates/bar-tab-template.html`, "utf8");
-
-const urlRegex = /[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}\.([a-zA-Z\d-]{2,63})\b(?:\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?[-a-zA-Z0-9@:%_+.~#?&//=]*/gi;
 
 class BrowserTab {
     constructor(window, options) {
@@ -69,15 +68,13 @@ class BrowserTab {
 
     loadURL(url) {
         const webview = this.webview[0];
-        const validURL = new RegExp(urlRegex).exec(url);
+        const validURL = validateUrl(url);
 
         console.log(url);
-        console.log(urlRegex);
-
         console.log(validURL);
 
-        if (validURL && this.tlds.indexOf(validURL[1].toUpperCase()) !== -1) {
-            if (!/^https?:\/\//.test(url)) {
+        if (validURL) {
+            if (!/[a-z0-9\-]{1,}:\/\//.test(url)) {
                 url = `http://${url}`;
             }
         } else {
@@ -86,10 +83,6 @@ class BrowserTab {
 
         this.window.urlBar.val(url);
         webview.loadURL(url);
-    }
-
-    get tlds() {
-        return this.window.tlds;
     }
 }
 
