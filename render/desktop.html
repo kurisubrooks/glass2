@@ -7,8 +7,9 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link href="./styles/core.css" rel="stylesheet">
     <link href="./styles/desktop.css" rel="stylesheet">
-    <link href="./styles/window.css" rel="stylesheet">
     <link href="./styles/toolbar.css" rel="stylesheet">
+    <link href="./styles/app-launcher.css" rel="stylesheet">
+    <link href="./styles/window.css" rel="stylesheet">
     <link href="./styles/notifications.css" rel="stylesheet">
     <link href="./styles/context-menu.css" rel="stylesheet">
 
@@ -27,7 +28,7 @@
         const { remote } = require("electron");
 
         // Core
-        const { WindowManager, Notification, Taskbar, ContextMenu } = require("../core/System");
+        const { WindowManager, Notification, Taskbar, TaskbarItem, ContextMenu } = require("../core/System");
 
         // Apps
         const { BrowserApp } = require("../apps/Browser/");
@@ -40,8 +41,13 @@
             const browser = new BrowserApp();
             const terminal = new TerminalApp();
 
-            taskbar.addPin(browser);
-            taskbar.addPin(terminal);
+            taskbar.start();
+
+            const browser_app = new TaskbarItem(browser).addApp();
+            const terminal_app = new TaskbarItem(terminal).addApp();
+
+            // taskbar.addPin(browser);
+            // taskbar.addPin(terminal);
 
             setTimeout(() => {
                 new Notification({
@@ -58,6 +64,12 @@
 
     <div class="desktop"></div>
     <div class="notifications pos-top-right" id="breadbox"></div>
+    <div class="launcher">
+        <div class="left">
+
+        </div>
+        <div class="right"></div>
+    </div>
     <div class="toolbar transparent"></div>
 
     <script>
