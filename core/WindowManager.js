@@ -1,6 +1,10 @@
 const windows = {};
 
 class WindowManager {
+    get windows() {
+        return windows;
+    }
+
     static addWindow(window) {
         windows[window.id] = window;
         return window;
