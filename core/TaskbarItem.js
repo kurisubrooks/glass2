@@ -21,7 +21,7 @@ class TaskbarItem extends Taskbar {
     }
 
     onClick() {
-        console.log(WindowManager.windows);
+        // console.log(WindowManager.windows);
     }
 
     addPin() {
@@ -46,7 +46,7 @@ class TaskbarItem extends Taskbar {
 
         appItem.on("click", this.app.onClick.bind(this.app));
 
-        console.log(this.appArea);
+        // console.log(this.appArea);
 
         this.appArea.append(appItem);
     }
