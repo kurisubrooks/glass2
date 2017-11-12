@@ -3,15 +3,14 @@ const Window = require("../../core/Window");
 
 class TerminalApp extends App {
     constructor() {
-        super("Terminal");
-    }
-
-    get theme() {
-        return "dark";
-    }
-
-    get size() {
-        return [1024, 576];
+        super({
+            name: "Terminal",
+            directory: "Terminal",
+            theme: "dark",
+            size: [1024, 576],
+            index: "index.html",
+            icon: "icon.png"
+        });
     }
 }
 

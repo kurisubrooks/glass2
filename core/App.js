@@ -2,20 +2,23 @@ const fs = require("fs");
 const path = require("path");
 
 const guid = require("./Util/guid");
-const WindowManager = require("./WindowManager");
 const Window = require("./Window");
+const WindowManager = require("./WindowManager");
 
 class App {
-    constructor(name, WindowType) {
-        if (!name) throw new Error("Missing App Name");
-
-        this.name = name;
+    constructor(data) {
+        this.name = data.name;
         this.id = guid();
-        this.icon = path.join(__dirname, "..", "apps", name, "icon.png");
-        this.content = fs.readFileSync(path.join(__dirname, "..", "apps", name, "index.html"), "utf8");
-        this.WindowType = WindowType || Window;
+        this.theme = data.theme || "light";
+        this.size = data.size || [1280, 720];
+        this.frame = data.frame || true;
+        this.icon = path.join(__dirname, "..", "apps", data.directory || data.name, data.icon || "icon.png");
+        this.content = fs.readFileSync(path.join(__dirname, "..", "apps", data.directory || data.name, data.index || "index.html"), "utf8");
+        this.WindowType = data.WindowType || Window;
 
-        // console.log(this.name, this.frame);
+        if (!data.name) throw new Error("App Name missing");
+        if (data.size && !Array.isArray(data.size)) throw new Error("App Window Size must be an array of 2 digits");
+        // if (data.WindowType && !(data.WindowType instanceof Window)) throw new Error("WindowType must be an instance of Window");
     }
 
     set contextMenu(contextMenu) {
@@ -26,18 +29,6 @@ class App {
         return this.context;
     }
 
-    get theme() {
-        return "light";
-    }
-
-    get size() {
-        return [1280, 720];
-    }
-
-    get frame() {
-        return true;
-    }
-
     onClick() {
         WindowManager.addWindow(new this.WindowType({
             title: this.name,
@@ -46,12 +37,6 @@ class App {
             theme: this.theme,
             content: this.content
         })).openIn(".desktop");
-        // WindowManager.createWindow({
-        //     title: this.name,
-        //     size: this.size,
-        //     theme: this.theme,
-        //     content: this.content
-        // }).openIn(".desktop");
     }
 }
 

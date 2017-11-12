@@ -3,30 +3,28 @@ const App = require("../../core/App");
 const Window = require("../../core/Window");
 const BrowserTab = require("./BrowserTab");
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-// Move this to some settings file somewhere
-const defaultPage = "https://www.google.com/"; // eslint-disable-line no-unused-vars
+const defaultPage = "https://www.google.com/";
 
 class BrowserApp extends App {
     constructor() {
-        super("Browser", BrowserWindow);
+        super({
+            name: "Browser",
+            directory: "Browser",
+            theme: "dark",
+            index: "index.html",
+            icon: "icon.png",
+            WindowType: BrowserWindow
+        });
 
         const styles = fs.readFileSync(path.join(__dirname, "templates/style.html"));
         this.content = this.content.replace("{{styles}}", styles);
     }
-
-    get theme() {
-        return "dark";
-    }
 }
 
 class BrowserWindow extends Window {
-    constructor(options) {
-        super(options);
-    }
-
     openIn(windowArea) {
         super.openIn(windowArea);
 
