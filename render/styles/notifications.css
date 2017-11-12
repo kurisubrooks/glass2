@@ -1,16 +1,8 @@
 .notifications {
     position: absolute;
     z-index: 10001;
-    bottom: 70px;
+    top: 10px;
     right: 10px;
-}
-
-.notifications.pos-top-right {
-    top: 10px !important;
-}
-
-.notifications.pos-bottom-right {
-    bottom: 64px !important;
 }
 
 .notification {
@@ -21,6 +13,7 @@
     width: 380px;
     padding: 14px 20px;
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
 }
 
 .notification .content {

@@ -14,6 +14,9 @@
     <link href="./styles/notifications.css" rel="stylesheet">
     <link href="./styles/context-menu.css" rel="stylesheet">
 
+    <script src="../core/Desktop.js"></script>
+    <script> new Desktop(); </script>
+
     <style>
 
         body {
@@ -23,42 +26,6 @@
 
     </style>
 
-    <script>
-
-        const $ = require("jquery");
-        const moment = require("moment");
-        const { remote } = require("electron");
-
-        // Core
-        const { WindowManager, Notification, Taskbar, TaskbarItem, ContextMenu } = require("../core/System");
-
-        // Apps
-        const { BrowserApp } = require("../apps/Browser/");
-        const { TerminalApp } = require("../apps/Terminal/");
-
-        $(() => {
-            setTimeout(() => $("body").fadeIn(250), 200);
-
-            const taskbar = new Taskbar(".toolbar");
-            const browser = new BrowserApp();
-            const terminal = new TerminalApp();
-
-            taskbar.start();
-
-            const browser_app = new TaskbarItem(browser).addApp();
-            const terminal_app = new TaskbarItem(terminal).addApp();
-
-            setTimeout(() => {
-                new Notification({
-                    title: "System",
-                    message: "Initialised",
-                    image: "../assets/images/system.png"
-                });
-            }, 700);
-        });
-
-    </script>
-
 </head>
 <body>
 
@@ -66,7 +33,7 @@
     <div class="desktop"></div>
 
     <!-- Notifications Container -->
-    <div class="notifications pos-top-right" id="breadbox"></div>
+    <div class="notifications"></div>
 
     <!-- App Launcher -->
     <div class="launcher">

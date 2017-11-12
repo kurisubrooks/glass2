@@ -21,7 +21,7 @@ module.exports = class Notification {
     }
 
     create() {
-        const container = $(`#breadbox`);
+        const container = $(`.notifications`);
         const notification = $(`<div class="notification" id="${this.id}"></div>`);
         const referring = $(`<div class="app" style="color:${this.colour};"></div>`);
         const icon = $(`<img src="${this.icon}">`);
