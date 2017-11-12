@@ -18,7 +18,7 @@ class App {
 
         if (!data.name) throw new Error("App Name missing");
         if (data.size && !Array.isArray(data.size)) throw new Error("App Window Size must be an array of 2 digits");
-        // if (data.WindowType && !(data.WindowType instanceof Window)) throw new Error("WindowType must be an instance of Window");
+        if (data.WindowType && !(data.WindowType.prototype instanceof Window)) throw new Error("WindowType must be an instance of Window");
     }
 
     set contextMenu(contextMenu) {
