@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+const shortcut = require("electron-localshortcut");
 
 let win;
 let startup = () => {
@@ -14,6 +15,10 @@ let startup = () => {
 
     win.loadURL(`file://${__dirname}/render/startup.html`);
     // win.webContents.openDevTools()
+
+    shortcut.register(win, "Ctrl+W", () => {
+        return false;
+    });
 
     win.on("closed", () => {
         win = null;
