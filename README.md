@@ -1,10 +1,10 @@
 # Glass
-
-Prototype HTML5 Desktop Operating System
+[![Discord](https://discordapp.com/api/guilds/292970618834649088/embed.png)](https://discord.gg/jD5V5EH)  
+Prototype HTML5 Desktop Operating System  
 
 ### To-Do
 Ready to contribute, or are interested in seeing what features are still to come for Glass?  
-Check them out on [Trello](https://trello.com/b/KkOzOtSF/glass2)!
+Check them out on [Trello](https://trello.com/b/KkOzOtSF/glass2)! 
 
 ### Installation
 ```bash
