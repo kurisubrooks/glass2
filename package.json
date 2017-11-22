@@ -20,5 +20,9 @@
   "devDependencies": {
     "electron-rebuild": "^1.5.7",
     "eslint": "^3.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurisubrooks/glass2.git"
   }
 }
