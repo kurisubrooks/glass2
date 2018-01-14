@@ -8,6 +8,12 @@ const path = require("path");
 
 const defaultPage = "https://www.google.com/";
 
+const URL_HIGHLIGHTING_COLORS = {
+  protocol: 'green',
+  domain: 'white',
+  path: 'gray'
+};
+
 class BrowserApp extends App {
     constructor() {
         super({
@@ -53,7 +59,8 @@ class BrowserWindow extends Window {
 
         urlBar.on("keypress", event => {
             if (event.key === "Enter") {
-                this.openTab.loadURL(urlBar.val());
+                console.log(urlBar.text());
+                this.openTab.loadURL(urlBar.text());
             }
         });
 
@@ -126,7 +133,18 @@ class BrowserWindow extends Window {
     }
 
     tabSwitch() {
-        this.urlBar.val(this.openTabWebview[0].getURL());
+        this.setURLBar(this.openTabWebview[0].getURL());
+    }
+
+    setURLBar(url) {
+      const highlightingRegex = /^([\w-]*\:\/\/)([\w-\:\.]*)(.*)$/;
+      const highlightedURL = url.replace(highlightingRegex, (match, protocol, domain, path) => {
+        return `<span style="color: ${URL_HIGHLIGHTING_COLORS.protocol}">${protocol}</span>` +
+               `<span style="color: ${URL_HIGHLIGHTING_COLORS.domain}">${domain}</span>` +
+               `<span style="color: ${URL_HIGHLIGHTING_COLORS.path}">${path}</span>`;
+      });
+
+      this.urlBar.html(highlightedURL);
     }
 
     get openTab() {
