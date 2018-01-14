@@ -27,7 +27,6 @@ class BrowserTab {
         webview.on("page-title-updated", event => {
             this.tab.find(".text").text(event.originalEvent.title);
             window.checkButtons();
-            window.urlBar.val(webview[0].src);
         });
 
         webview.on("did-finish-load", () => {
