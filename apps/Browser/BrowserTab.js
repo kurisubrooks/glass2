@@ -27,12 +27,11 @@ class BrowserTab {
         webview.on("page-title-updated", event => {
             this.tab.find(".text").text(event.originalEvent.title);
             window.checkButtons();
-            window.urlBar.val(webview[0].src);
         });
 
         webview.on("did-finish-load", () => {
             window.checkButtons();
-            window.urlBar.val(webview[0].src);
+            window.setURLBar(webview[0].src);
         });
 
         tab.click(() => {
@@ -70,9 +69,6 @@ class BrowserTab {
         const webview = this.webview[0];
         const validURL = validateUrl(url);
 
-        console.log(url);
-        console.log(validURL);
-
         if (validURL) {
             if (!/[a-z0-9\-]{1,}:\/\//.test(url)) {
                 url = `http://${url}`;
@@ -81,7 +77,7 @@ class BrowserTab {
             url = `https://www.google.com/#q=${encodeURIComponent(url)}`;
         }
 
-        this.window.urlBar.val(url);
+        this.window.setURLBar(url);
         webview.loadURL(url);
     }
 }
