@@ -6,17 +6,25 @@ const users = [
     {
         name: "Kurisu Brooks",
         avatar: "kurisu",
+        permission: "root",
         password: "cheese"
     },
     {
         name: "Katie Sekai",
         avatar: "katie",
+        permission: "user",
         password: "tomato"
     },
     {
         name: "Sammy Sekai",
         avatar: "sammy",
+        permission: "user",
         password: "pumpkin"
+    },
+    {
+        name: "Anime Catgirl",
+        permission: "root",
+        password: ""
     }
 ];
 
@@ -51,10 +59,16 @@ const addGhosts = (amount, append) => {
     }
 };
 
+document.addEventListener("keyup", (e) => {
+    if (e.keyCode === 116) {
+        location.reload();
+    }
+});
+
 $(() => {
     // Loop Through Users, Add them to the page
     for (let index = 0; index < users.length; index++) {
-        const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar}.png);"></div>`);
+        const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar || 'default'}.png);"></div>`);
 
         if (index === 0) selectUser(head);
 
