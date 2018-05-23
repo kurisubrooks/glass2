@@ -1,0 +1,36 @@
+module.exports = [
+    {
+        name: "Kurisu Brooks",
+        username: "kbrooks",
+        avatar: "kurisu",
+        permission: "root",
+        password: "cheese"
+    },
+    {
+        name: "Katie Sekai",
+        username: "katiesakai",
+        avatar: "katie",
+        permission: "user",
+        password: "tomato"
+    },
+    {
+        name: "Sammy Sekai",
+        username: "sammysekai",
+        avatar: "sammy",
+        permission: "user",
+        password: "pumpkin"
+    },
+    {
+        name: "Anime Catgirl",
+        username: "acatgirl",
+        permission: "root",
+        password: ""
+    },
+    {
+        name: "root",
+        username: "root",
+        permission: "system",
+        visibility: "hidden",
+        password: "alpine"
+    }
+];

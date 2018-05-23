@@ -2,38 +2,10 @@ const { remote } = require("electron");
 const moment = require("moment");
 const $ = window.jQuery = require("jquery");
 
-const users = [
-    {
-        name: "Kurisu Brooks",
-        username: "kbrooks",
-        avatar: "kurisu",
-        permission: "root",
-        password: "cheese"
-    },
-    {
-        name: "Katie Sekai",
-        username: "katiesakai",
-        avatar: "katie",
-        permission: "user",
-        password: "tomato"
-    },
-    {
-        name: "Sammy Sekai",
-        username: "sammysekai",
-        avatar: "sammy",
-        permission: "user",
-        password: "pumpkin"
-    },
-    {
-        name: "Anime Catgirl",
-        username: "acatgirl",
-        permission: "root",
-        password: ""
-    }
-];
+let users = require(`${__dirname}/../OS/usr/private/store.pw`);
 
 let selectedUserIndex = null;
-let selectedUser = null;
+let selectedUser = null; // eslint-disable-line no-unused-vars
 
 const selectUser = head => {
     head = $(head);
@@ -44,14 +16,23 @@ const selectUser = head => {
 
     $(".head").removeClass("active");
 
+    let visibleUsers = [];
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].visibility !== "hidden") {
+            visibleUsers.push(users[i]);
+        }
+    }
+
     head.addClass("active");
-    $(".login .form .title").text(users[index].name);
+    $(".login .form .title").text(visibleUsers[index].name);
     selectedUserIndex = index;
-    selectedUser = users[selectedUserIndex];
+    selectedUser = visibleUsers[selectedUserIndex];
 
     $(".ghost").remove();
 
-    const rightElements = users.length - selectedUserIndex - 1;
+    const rightElements = visibleUsers.length - selectedUserIndex - 1;
+
+    console.log(rightElements);
 
     addGhosts(Math.abs(selectedUserIndex - rightElements), selectedUserIndex > rightElements);
 };
@@ -63,8 +44,8 @@ const addGhosts = (amount, append) => {
     }
 };
 
-document.addEventListener("keyup", (e) => {
-    if (e.keyCode === 116) {
+document.addEventListener("keyup", (evt) => {
+    if (evt.keyCode === 116) {
         location.reload();
     }
 });
@@ -72,11 +53,13 @@ document.addEventListener("keyup", (e) => {
 $(() => {
     // Loop Through Users, Add them to the page
     for (let index = 0; index < users.length; index++) {
-        const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar || 'default'}.png);"></div>`);
+        if (users[index].visibility !== "hidden") {
+            const head = $(`<div class="head" data-user=${index} style="background-image: url(../assets/avatars/${users[index].avatar || "default"}.png);"></div>`);
 
-        if (index === 0) selectUser(head);
+            if (index === 0) selectUser(head);
 
-        $(".heads").append(head);
+            $(".heads").append(head);
+        }
     }
 
     // Update Time
