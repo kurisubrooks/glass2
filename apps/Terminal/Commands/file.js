@@ -24,7 +24,7 @@ class FileCommand extends Command {
             try {
                 let buf = Buffer.alloc(4100);
 
-                const fd = openSync(`${this.arguments}`, "r");
+                const fd = openSync(this.arguments, "r");
                 const bytesRead = readSync(fd, buf, 0, 4100, 0);
 
                 closeSync(fd);
