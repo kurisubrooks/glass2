@@ -2,3 +2,5 @@ node_modules
 *.log
 .vscode
 *.sqlite
+.testTerminal
+.DS_Store
