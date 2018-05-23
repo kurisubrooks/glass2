@@ -1,29 +1,30 @@
 {
-  "name": "glass",
-  "version": "2.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "./node_modules/.bin/electron .",
-    "test": "./node_modules/.bin/eslint ."
-  },
-  "dependencies": {
-    "bcrypt-nodejs": "github:shanegirish/bcrypt-nodejs",
-    "electron": "^2.0.2",
-    "electron-localshortcut": "^2.0.2",
-    "file-type": "^8.0.0",
-    "jquery": "^3.2.1",
-    "moment": "^2.22.1",
-    "sequelize": "^4.37.8",
-    "sqlite3": "^4.0.0",
-    "url-validate": "^1.0.1",
-    "vue": "^2.5.2"
-  },
-  "devDependencies": {
-    "electron-rebuild": "^1.5.7",
-    "eslint": "^4.19.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kurisubrooks/glass2.git"
-  }
+    "name": "glass",
+    "version": "2.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "./node_modules/.bin/electron .",
+        "test": "./node_modules/.bin/eslint ."
+    },
+    "dependencies": {
+        "bcrypt-nodejs": "github:shanegirish/bcrypt-nodejs",
+        "electron": "^2.0.2",
+        "electron-localshortcut": "^2.0.2",
+        "file-type": "^8.0.0",
+        "jquery": "^3.2.1",
+        "moment": "^2.22.1",
+        "sequelize": "^4.37.8",
+        "sqlite3": "^4.0.0",
+        "url-validate": "^1.0.1",
+        "vue": "^2.5.2"
+    },
+    "devDependencies": {
+        "typescript": "^2.8.3",
+        "electron-rebuild": "^1.5.7",
+        "eslint": "^4.19.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kurisubrooks/glass2.git"
+    }
 }

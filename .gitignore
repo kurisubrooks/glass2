@@ -3,3 +3,4 @@ node_modules
 .vscode
 *.sqlite
 .testTerminal
+.DS_Store
