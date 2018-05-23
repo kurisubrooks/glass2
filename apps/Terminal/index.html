@@ -1,20 +1,36 @@
-<div style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
+<div id="TerminalDiv" style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
     <span style="color:rgb(160, 160, 160);" id="cwu">user@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$ </span><input type="text" style="background:transparent;border:none;outline:none;color:rgb(160, 160, 160);width:80%;word-wrap: break-word;" id="TerminalInput" />
     <br>
     <div id="TerminalOutputContainer"></div>
 </div>
 <script>
+    const { remote } = require("electron");
+    let i = 0;
     document.getElementById("cwu").textContent = `${JSON.parse(localStorage.currentUser).username}@${localStorage.currentOS}`;
-    document.addEventListener("keyup", (e) => {
-        let command = document.getElementById("TerminalInput").value;
-        while (command.startsWith(" ")) {
-            command = command.slice(1);
+    remote.process.on("SizeChange", () => {
+        while(i > 23) {
+            $('#TerminalOutputSpan:first').remove();
+            $('#TerminalOutputBreak:first').remove();
+            i--;
         }
+    })
+    document.addEventListener("keyup", (e) => {
         if (e.keyCode === 13) {
+            let command = document.getElementById("TerminalInput").value;
+            if (i >= Math.round(Math.round($("#TerminalDiv").height())/22)) {
+                $('#TerminalOutputSpan:first').remove();
+                $('#TerminalOutputBreak:first').remove();
+                i = Math.round(Math.round($("#TerminalDiv").height())/22) - 1;
+            }
+            i++;
+            while (command.startsWith(" ")) {
+                command = command.slice(1);
+            }
             const TerminalOutput = new TerminalApp().execute(document.getElementById("cwd").outerText, command);
             const OutputText = TerminalOutput.Error || TerminalOutput.return;
 
-            $("#TerminalOutputContainer").append(`<span id="TerminalOutputSpan" style="color:rgb(160, 160, 160);">${OutputText}</span><br>`);
+
+            $("#TerminalOutputContainer").append(`<span id="TerminalOutputSpan" style="color:rgb(160, 160, 160);">${OutputText}</span><br id="TerminalOutputBreak">`);
 
             document.getElementById("TerminalInput").value = "";
         }

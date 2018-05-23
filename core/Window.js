@@ -3,6 +3,8 @@ const $ = require("jquery");
 const Template = require("./Template");
 const guid = require("./Util/guid");
 
+const { remote } = require("electron");
+
 class Window {
     constructor(options) {
         if (!options.title) throw new Error("Window title must not be missing.");
@@ -80,6 +82,7 @@ class Window {
 
             this.window.addClass("maximized");
         } else {
+            remote.process.emit("SizeChange");
             this.width = this.size[0];
             this.height = this.size[1];
 
@@ -100,7 +103,6 @@ class Window {
         if (this.maximized && target) {
             setTimeout(() => {
                 if ($(target).data("mousedown")) {
-                    console.log("trigger");
                     this.maximize();
                     this.posX = 0;
                     this.posY = 0;
