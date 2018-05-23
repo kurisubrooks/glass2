@@ -19,14 +19,14 @@ class LSCommand extends Command {
     }
     exec() {
         if (!this.arguments) {
-            this.return = readdirSync(`./OS/${this.cwd}`);
+            this.return = readdirSync(`./OS/${this.cwd}`).join(", ");
             return;
         }
         if (this.arguments[0] === "/") {
-            this.return = readdirSync(`./OS/${this.arguments}`);
+            this.return = readdirSync(`./OS/${this.arguments}`).join(", ");
             return;
         }
-        this.return = readdirSync(`./OS/${this.cwd}/${this.arguments}`);
+        this.return = readdirSync(`./OS/${this.cwd}/${this.arguments}`).join(", ");
         return;
     }
 }

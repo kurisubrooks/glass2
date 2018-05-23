@@ -3,7 +3,7 @@ const guid = require("./Util/guid");
 const fadeRemove = (el, sp) => el.fadeOut(sp || "fast", () => el.remove());
 let notifications = {};
 
-module.exports = class Notification {
+class Notification {
     constructor(options) {
         this.title = options.title;
         this.message = options.message;
@@ -67,4 +67,6 @@ module.exports = class Notification {
     clear() {
         clearTimeout(notifications[this.id]);
     }
-};
+}
+
+module.exports = Notification;

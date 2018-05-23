@@ -27,10 +27,10 @@ class TerminalApp extends App {
         if (cwd === "~") {
             cwd = `/home/${this.user}`;
         }
-        if (this.commands[command]) {
+        if (this.commands[command] && command !== undefined) {
             return new this.commands[command].RunCommand(cwd, args.join(""));
         }
-        return new TerminalError("Unknown Command", command, input);
+        return new TerminalError("Unknown Command", command || null, input);
     }
 }
 

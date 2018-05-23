@@ -1,5 +1,7 @@
 <div style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
-    <span style="color:rgb(160, 160, 160);" id="cwu">user@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$ </span><input type="text" style="background:transparent;border:none;outline:none;color:rgb(160, 160, 160);" id="TerminalInput" />
+    <span style="color:rgb(160, 160, 160);" id="cwu">user@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$ </span><input type="text" style="background:transparent;border:none;outline:none;color:rgb(160, 160, 160);width:80%;word-wrap: break-word;" id="TerminalInput" />
+    <br>
+    <div id="TerminalOutputContainer"></div>
 </div>
 <script>
     document.getElementById("cwu").textContent = `${JSON.parse(localStorage.currentUser).username}@${localStorage.currentOS}`;
@@ -9,7 +11,11 @@
             command = command.slice(1);
         }
         if (e.keyCode === 13) {
-            console.log(new (require(`${__dirname}/../apps/Terminal/`).TerminalApp)().execute(document.getElementById("cwd").outerText, command).return);
+            const TerminalOutput = new TerminalApp().execute(document.getElementById("cwd").outerText, command);
+            const OutputText = TerminalOutput.Error || TerminalOutput.return;
+
+            $("#TerminalOutputContainer").append(`<span id="TerminalOutputSpan" style="color:rgb(160, 160, 160);">${OutputText}</span><br>`);
+
             document.getElementById("TerminalInput").value = "";
         }
     });
