@@ -5,24 +5,28 @@ const $ = window.jQuery = require("jquery");
 const users = [
     {
         name: "Kurisu Brooks",
+        username: "kbrooks",
         avatar: "kurisu",
         permission: "root",
         password: "cheese"
     },
     {
         name: "Katie Sekai",
+        username: "katiesakai",
         avatar: "katie",
         permission: "user",
         password: "tomato"
     },
     {
         name: "Sammy Sekai",
+        username: "sammysekai",
         avatar: "sammy",
         permission: "user",
         password: "pumpkin"
     },
     {
         name: "Anime Catgirl",
+        username: "acatgirl",
         permission: "root",
         password: ""
     }
@@ -100,6 +104,7 @@ $(() => {
         if (user.password === pass) {
             input.attr("disabled", true);
             input.blur();
+            localStorage.currentOS = remote.getGlobal("OS");
             localStorage.currentUser = JSON.stringify(user);
             setTimeout(() => $(".container").fadeOut(250), 800);
             setTimeout(() => remote.getCurrentWindow().loadURL(`file://${__dirname}/desktop.html`), 1100);

@@ -23,6 +23,9 @@ let startup = () => {
     win.on("closed", () => {
         win = null;
     });
+
+    // Change this to set your OS name
+    global.OS = "GlassOS";
 };
 
 app.on("ready", startup);

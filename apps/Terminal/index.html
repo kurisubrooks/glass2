@@ -1,3 +1,16 @@
 <div style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
-    <span style="color:rgb(0, 110, 18);" id="cwu">root@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$</span>
+    <span style="color:rgb(160, 160, 160);" id="cwu">user@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$ </span><input type="text" style="background:transparent;border:none;outline:none;color:rgb(160, 160, 160);" id="TerminalInput" />
 </div>
+<script>
+    document.getElementById("cwu").textContent = `${JSON.parse(localStorage.currentUser).username}@${localStorage.currentOS}`;
+    document.addEventListener("keyup", (e) => {
+        let command = document.getElementById("TerminalInput").value;
+        while (command.startsWith(" ")) {
+            command = command.slice(1);
+        }
+        if (e.keyCode === 13) {
+            console.log(new (require(`${__dirname}/../apps/Terminal/`).TerminalApp)().execute(document.getElementById("cwd").outerText, command).return);
+            document.getElementById("TerminalInput").value = "";
+        }
+    });
+</script>
