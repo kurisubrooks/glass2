@@ -1,6 +1,7 @@
 const Command = require("../Util/CommandRegister");
+const TerminalError = require("../Util/TerminalError");
 
-const { readdirSync } = require("fs");
+const { readdirSync } = require("sandboxed-fs").bind(`${__dirname}/../../../OS`);
 
 class LSCommand extends Command {
     constructor(Cwd, Arguments) {
@@ -19,14 +20,26 @@ class LSCommand extends Command {
     }
     exec() {
         if (!this.arguments) {
-            this.return = readdirSync(`./OS/${this.cwd}`).join(", ");
+            try {
+                this.return = readdirSync(`${this.cwd}`).join(", ");
+            } catch(error) {
+                this.Error = new TerminalError(`No such file or directory: ${this.cwd}`, `ls`).Error;
+            }
             return;
         }
         if (this.arguments[0] === "/") {
-            this.return = readdirSync(`./OS/${this.arguments}`).join(", ");
+            try {
+                this.return = readdirSync(`${this.arguments}`).join(", ");
+            } catch(error) {
+                this.Error = new TerminalError(`No such file or directory: ${this.arguments}`, `ls`).Error;
+            }
             return;
         }
-        this.return = readdirSync(`./OS/${this.cwd}/${this.arguments}`).join(", ");
+        try {
+            this.return = readdirSync(`${this.cwd}/${this.arguments}`).join(", ");
+        } catch(error) {
+            this.Error = new TerminalError(`No such file or directory: ${this.cwd}/${this.arguments}`, `ls`).Error;
+        }
         return;
     }
 }

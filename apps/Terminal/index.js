@@ -30,7 +30,7 @@ class TerminalApp extends App {
         if (this.commands[command] && command !== undefined) {
             return new this.commands[command].RunCommand(cwd, args.join(""));
         }
-        return new TerminalError("Unknown Command", command || null, input);
+        return new TerminalError("Unknown Command", command || null);
     }
 }
 
