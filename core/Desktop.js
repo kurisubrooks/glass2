@@ -2,7 +2,7 @@
 const $ = require("jquery");
 
 // Core
-const { Notification, Taskbar, TaskbarItem } = require("../core/System");
+const { Notification, Taskbar, TaskbarItem, WindowManager } = require("../core/System"); // eslint-disable-line no-unused-vars
 
 // Apps
 const { BrowserApp } = require("../apps/Browser/");
