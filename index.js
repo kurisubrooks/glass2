@@ -2,6 +2,10 @@ const { app, BrowserWindow } = require("electron");
 const shortcut = require("electron-localshortcut");
 
 let win;
+
+// Set extensions for require
+require.extensions[".pw"] = require.extensions[".js"];
+
 let startup = () => {
     win = new BrowserWindow({
         title: "Glass",
@@ -23,6 +27,9 @@ let startup = () => {
     win.on("closed", () => {
         win = null;
     });
+
+    // Change this to set your OS name
+    global.OS = "GlassOS";
 };
 
 app.on("ready", startup);

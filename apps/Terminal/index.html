@@ -1,3 +1,44 @@
-<div style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
-    <span style="color:#F7E067;">~</span>&nbsp;&nbsp;<span style="color:#86E156;">$</span>
+<div id="TerminalDiv" style="height:100%;background:#1D1D1D;font-style:monospace;cursor:text;padding:10px;">
+    <span style="color:rgb(160, 160, 160);" id="cwu">user@Glass</span><span style="color:rgb(160, 160, 160);">:</span><span style="color:rgb(0, 30, 165);" id="cwd">~</span><span style="color:rgb(160, 160, 160);">$ </span><input type="text" style="background:transparent;border:none;outline:none;color:rgb(160, 160, 160);width:80%;word-wrap: break-word;" id="TerminalInput" />
+    <br>
+    <div id="TerminalOutputContainer"></div>
 </div>
+<script>
+    remote = require("electron").remote;
+    i = 0;
+    inputField = document.getElementById("TerminalInput");
+    inputField.focus();
+    document.getElementById("cwu").textContent = `${JSON.parse(localStorage.currentUser).username}@${localStorage.currentOS}`;
+    remote.process.on("SizeChange", () => {
+        while(i > 23) {
+            $('#TerminalOutputSpan:first').remove();
+            $('#TerminalOutputBreak:first').remove();
+            i--;
+        }
+    });
+    $("#TerminalDiv").click(()=>{
+        inputField.focus();
+    });
+    if(!document.event) {
+        document.addEventListener("keyup", (e) => {
+            if (e.keyCode === 13) {
+                let command = inputField.value;
+                document.getElementById("TerminalInput").value = "";
+                if (i >= Math.round(Math.round($("#TerminalDiv").height())/22)) {
+                    $('#TerminalOutputSpan:first').remove();
+                    $('#TerminalOutputBreak:first').remove();
+                    i = Math.round(Math.round($("#TerminalDiv").height())/22) - 1;
+                }
+                i++;
+                while (command.startsWith(" ")) {
+                    command = command.slice(1);
+                }
+                const TerminalOutput = new TerminalApp().execute(document.getElementById("cwd").outerText, command);
+                const OutputText = TerminalOutput.Error || TerminalOutput.return;
+
+                $("#TerminalOutputContainer").append(`<span id="TerminalOutputSpan" style="color:rgb(160, 160, 160);">${OutputText}</span><br id="TerminalOutputBreak">`);
+            }
+        });
+        document.event = true;
+    }
+</script>

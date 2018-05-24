@@ -13,7 +13,7 @@ class Taskbar {
     start() {
         this.container.append(this.toolbar);
         this.clock = this.container.find("#clock");
-        this.container.find("#userprofile").attr("src", `../assets/avatars/${JSON.parse(localStorage.currentUser).avatar}.png`);
+        this.container.find("#userprofile").attr("src", `../assets/avatars/${JSON.parse(localStorage.currentUser).avatar || "default"}.png`);
 
         setInterval(() => this.updateClock(), 150);
     }
